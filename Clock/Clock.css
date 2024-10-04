@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #2e2e44;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color:rgb(40, 3, 40) ;
+    font-size: 25px;
+    box-shadow: 0px 5px 20px 7px;
+    border-radius: 20px;
+    background-color: black;
+
+}
+
+.hours,.minutes,.seconds,.amPm {
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+    border-radius: 20px;
+    margin: 30px;
+    font-size: 50px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+   
+}
+
+.hours {
+    border: 2px solid red;
+    color: red;
+    box-shadow: 0px 5px 25px .5px;
+
+}
+
+.minutes {
+    border: 2px solid lightblue;
+    color: lightblue;
+    box-shadow: 0px 5px 25px .5px;
+
+}
+
+.seconds {
+    border: 2px solid greenyellow;
+    color: greenyellow;
+    box-shadow: 0px 5px 25px .5px;
+
+}
+
+.amPm {
+    color: white;
+   
+
+}
+.hoursFrame, .minutesFrame,.secondsFrame{
+    position: relative;
+}
+.Hr{
+position: absolute;
+color: red;
+bottom: 40px;
+right: 75px;
+}
+
+.Mn{
+    position: absolute;
+    color: lightblue;
+    bottom: 40px;
+    right: 60px;
+}
+.Se{
+    position: absolute;
+    color: greenyellow;
+    bottom: 40px;
+    right: 60px;
+}
