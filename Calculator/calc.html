@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+
+<body>
+
+
+    <section class="sec1">
+
+        <div class="frame">
+            <div>
+                <p class="display"></p>
+
+                <button onclick="calculate('1')"> 1 </button>
+
+                <button onclick="calculate('2')"> 2 </button>
+
+                <button onclick="calculate('3')"> 3 </button>
+
+                <button onclick="calculate('+')"> + </button>
+            </div>
+
+            <div>
+                <button onclick="calculate('4')"> 4 </button>
+
+                <button onclick="calculate('5')"> 5 </button>
+
+                <button onclick="calculate('6')"> 6 </button>
+
+                <button onclick="calculate('-')"> - </button>
+            </div>
+
+            <div>
+                <button onclick="calculate('7')"> 7 </button>
+
+                <button onclick="calculate('8')"> 8 </button>
+
+                <button onclick="calculate('9')"> 9 </button>
+
+                <button onclick="calculate('*')"> * </button>
+            </div>
+
+            <div>
+
+                <button onclick="calculate('0')"> 0 </button>
+
+                <button onclick="calculate('.')"> . </button>
+
+                <button onclick="result = eval(result);
+                displayResult()"> = </button>
+
+                <button onclick="calculate('/')"> / </button>
+            </div>
+            <div>
+                <button class="clear" onclick="result = '';
+                displayResult()"> Clear </button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        let result = " ";
+
+        function calculate(value) {
+            result += value;
+            displayResult();
+        }
+
+        function displayResult() {
+            document.querySelector('.display').innerHTML = `${result}`;
+        }
+    </script>
+</body>
+
+</html>

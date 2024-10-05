@@ -1,0 +1,89 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:rgb(8, 8, 83);
+  }
+  
+  .frame {
+    width: 590px;
+    border: 7px solid purple;
+    border-radius: 20px;
+    position: relative;
+    background-color: aqua;
+  }
+  
+  .header{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 35px;
+      padding: 15px;
+  }
+  .range{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: rgb(200, 23, 23);
+      font-weight: bold;
+  }
+  .playerGuess, .checkPlayerGuess{
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      padding: 5px;
+      margin: 20px;
+      background-color: purple;
+      color: white;
+      border:none;
+      border-radius: 10px;
+  }
+  .playerGuess{
+      width: 230px;
+  }
+  ::placeholder{
+      color: white;
+  }
+  .checkPlayerGuess{
+      cursor: pointer;
+      width: 230px;
+  
+  }
+  .display{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: rgb(200, 23, 23);
+      font-weight: bold;
+      margin-bottom: 60px;
+  }
+  
+  .playAgain{
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      padding: 5px;
+      margin-left: 200px;
+      background-color: purple;
+      color: white;
+      border:none;
+      border-radius: 10px;
+      width: 140px;
+      display: inline-flex;
+      cursor: pointer;
+      position: absolute;
+      bottom: 7px;
+  }
