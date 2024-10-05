@@ -13,6 +13,8 @@ async function checkWeather() {
 checkWeather();
 
 
+
+/*
 function getTimeZone() {
     const location = document.querySelectorAll('.locationName').values; //storing value of location;
 
@@ -56,3 +58,4 @@ function getTimeZone() {
         })
 
 }
+        */
