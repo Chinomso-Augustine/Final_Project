@@ -21,7 +21,6 @@ body {
     box-shadow: 0px 5px 20px 7px;
     border-radius: 20px;
     background-color: black;
-
 }
 
 .hours,.minutes,.seconds,.amPm {
@@ -37,35 +36,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-   
+    position: relative; 
 }
 
 .hours {
     border: 2px solid red;
     color: red;
     box-shadow: 0px 5px 25px .5px;
-
 }
 
 .minutes {
     border: 2px solid lightblue;
     color: lightblue;
     box-shadow: 0px 5px 25px .5px;
-
 }
 
 .seconds {
     border: 2px solid greenyellow;
     color: greenyellow;
     box-shadow: 0px 5px 25px .5px;
-
 }
 
 .amPm {
     color: white;
-   
-
 }
 .hoursFrame, .minutesFrame,.secondsFrame{
     position: relative;
@@ -93,5 +86,4 @@ right: 75px;
     color: blue;
     font-size: 100px;
     font-weight: bold;
-    
 }

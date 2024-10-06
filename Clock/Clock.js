@@ -12,32 +12,18 @@ function getTime() {
     let mn = currentTime.getMinutes();
     let se = currentTime.getSeconds();
 
-    //Converting to 12 hr time and setting AM and PM 
-    //for midnight
-    if (hr == 0) {
-        hr = 12;
-        amPmDisplay.textContent = "AM";
-    }
-    //for noon
-    else if (hr === 12) {
-        amPmDisplay.textContent = "PM";
-    }
-    //for afternoon 
-    else if (hr > 12) {
-        hr = hr - 12;
-        amPmDisplay.textContent = 'PM';
-    }
-    //for midnight before noon 
-    else {
-        amPmDisplay.textContent = 'AM';
-    }
-    displayTime(hr, mn, se);
-}
+    //Checking for AM and PM
+    let isAm = hr < 12 || hr === 0;
+    let amPm = isAm? amPmDisplay.innerHTML = "AM":amPmDisplay.innerHTML = "PM";
 
-function displayTime(hr, mn, se) {
-    hours.textContent = hr;
-    minutes.textContent = mn;
-    seconds.textContent = se;
+    //converting to 12hr format 
+    hr = hr % 12 || 12; 
+
+    //displaying time in two digits
+    hours.textContent = String(hr).padStart(2, "0");
+    minutes.textContent = String(mn).padStart(2, "0");
+    seconds.textContent = String(se).padStart(2, "0");
+    amPmDisplay.textContent = amPm; 
 }
 
 setInterval(getTime, 1000);
