@@ -4,7 +4,7 @@ let result = "";
 function calculator() {
 
     //Using eventlistener to update when button is clicked
-    document.querySelector('.buttons').addEventListener('click', function (e) {
+    document.querySelector('.calculator').addEventListener('click', function (e) {
         if (e.target.tagName === 'BUTTON') {
             const buttonValue = e.target.textContent;
             handleInput(buttonValue);
@@ -20,29 +20,63 @@ function handleInput(value) {
     //checking if the clicked element is a button
     if (value === '=') {
         try {
+            //checking for sinh
+            if (result.includes("sinh(")) {
+                let insideValue = result.match(/sinh\(([^)]+)\)/)[1];
+                //getting value as a num since exp requires a num instead of string
+                let x = parseFloat(insideValue);
+                result = (Math.exp(x) - Math.exp(-x)) / 2;
+            }else{
+
             result = eval(result.trim());
+        }
         }
         catch (e) {
             result = 'Wrong input'
         }
     }
-    else if (value === "Clear") {
+    else if (value === "AC") {
         result = '';
+    }
+    else if (value === "+/-") {
+        if (result.startsWith("-")) {
+            //remove negative sign if it's there 
+            result = result.substring(1);
+        }
+        //adding negative
+        else if (result !== "" && result != "0") {
+            result = "-" + result;
+        }
+    }
+    else if (value === '%') {
+        result /= 100;
+    }
+
+    //generate random num from 0 - 1 using rand with 8 decimal places
+    else if (value === 'Rand') {
+        result = Math.random().toFixed(8);
+    }
+    else if (value === 'sinh') {
+       if(!result.includes('sinh(')){
+        result+="sinh()";
+       }
+
     }
     else {
         result += value;
     }
-    display.textContent = result;
+    display.value = result;
     cursorDisplay();
 }
 
 
-function cursorDisplay(){
-    if(display.textContent.endsWith('|')){
-        display.textContent = display.textContent.slice(0, -1); //removes couser
+
+function cursorDisplay() {
+    if (display.value.endsWith('|')) {
+        display.value = display.value.slice(0, -1); //removes couser
     }
-    else{
-        display.textContent +='|';
+    else {
+        display.value += '|';
     }
 }
 setInterval(cursorDisplay, 500);
@@ -62,7 +96,7 @@ function keyboardListener() {
         //Since enter and = are identical and Escape and Clear are identical, store them in different variables and chose them randomly
         const keyMap = {
             'Enter': '=',
-            'Backspace': 'Clear',
+            'Backspace': 'AC',
         };
 
         //Handling ctrl = for selecting = sign and ctrl 8 for * 
