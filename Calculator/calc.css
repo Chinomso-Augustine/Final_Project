@@ -6,14 +6,23 @@
 }
 body{
     background-color: black;
-}
-.calculator{
-    width: 100%;
-    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    border: 2px solid white;
+}
+.calculator{
+    width: 40%;
+    max-width: 400px;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 7px solid greenyellow;
+    border-radius: 20px;
+    position: absolute;
+    top: 10px;
 }
 
 .display{
@@ -27,31 +36,26 @@ body{
     position: relative;
 }
 
-.buttons{
-    width: 500px;
-    border: 7px solid greenyellow;
-    border-radius: 20px;
-    position: absolute;
-    top: 10px;
-
-}
-
 button{
- 
-    border-radius: 50px;
     margin: 7px;
-    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     background-color: purple;
     color: white;
     cursor: pointer;
+}
+
+.scientificFuns button{
+    font-size: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
     border: none;
 }
-.inputValues{
-    width: 900px;
-}
-.functions{
-    width: 300px;
-    color: white;
+.basicAndNumeric button{
+    width: 70px;
+    height: 70px;
+    border-radius: 60px;
+    border: none;
+    font-size: 20px;
 }

@@ -12,83 +12,100 @@
 
     <section class="calculator">
     
-        <div class="buttons">
             <div class="display">0</div>
-            <div class="functions">
+
+            <div class="scientificFuns">
+                <!-- Parentheses and Memory Functions -->
                 <button>(</button>
                 <button>)</button>
                 <button>mc</button>
                 <button>m+</button>
                 <button>m-</button>
                 <button>mr</button>
-            </div>
-            <div class="functions">
-                <button>2^nd</button>
-                <button>x^2</button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-            </div>
-            <div class="functions">
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-            </div>
-            <div class="functions">
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-            </div>
-            <div class="functions">
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
+
+                <!-- Power Functions -->
+                <button>2<sup>nd</sup></button>
+                <button>x<sup>2</sup></button>
+                <button>x<sup>3</sup></button>
+                <button>x<sup>y</sup></button>
+                <button>e<sup>x</sup></button>
+                <button>10<sup>x</sup></button>
+
+
+                <button>1/x</button>
+                <button>
+                    <math>
+                        <mroot>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </mroot>
+                    </math>
+                </button>
+
+                <button>
+                    <math>
+                        <mroot>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </mroot>
+                    </math>
+                </button>
+
+                <button>
+                    <math>
+                        <mroot>
+                            <mi>x</mi>
+                            <mn>y</mn>
+                        </mroot>
+                    </math>
+                </button>
+                <button>ln</button>
+                <button>log<sub>10</sub></button>
+
+                <!-- Trigonometric Functions -->
+                <button>x!</button>
+                <button>sin</button>
+                <button>cos</button>
+                <button>tan</button>
+                <button>e</button>
+                <button>EE</button>
+
+                <!-- Random and Hyperbolic Functions -->
+                <button>Rand</button>
+                <button>sinh</button>
+                <button>cosh</button>
+                <button>tanh</button>
+                <button>π</button>
+                <button>Rad</button>
+
             </div>
 
-            <div class="inputValues">
+            <!-- Basic Operations and Clear -->
+            <div class="basicAndNumeric">
+
                 <button class="clear">AC</button>
                 <button>+/-</button>
                 <button>%</button>
                 <button>/</button>
-            </div>
-            <div class="inputValues">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
-            </div>
-            <div class="inputValues">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>/</button>
+
+                <!-- Numeric Buttons -->
                 <button>4</button>
                 <button>5</button>
                 <button>6</button>
                 <button>-</button>
-            </div>
-            
-            <div class="inputValues">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>*</button>
-            </div>
-            <div class="inputValues">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>+</button>
+                <button>Mode</button>
                 <button>0</button>
                 <button>.</button>
                 <button>=</button>
-                <button>Mode</button>
             </div>
-           
-            
-        </div>
 
     </section>
     <script src="calc.js"></script>
