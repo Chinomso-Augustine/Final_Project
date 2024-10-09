@@ -17,58 +17,60 @@ function calculator() {
 
 //function to handle basic operations
 function basicOperation(value) {
-    //checking if the clicked element is a button
-    if (value === '=') {
-        result = eval(result.trim());
-    }
-    else if (value === "AC") {
-        result = '';
-    }
-    else if (value === "+/-") {
-        if (result.startsWith("-")) {
-            //remove negative sign if it's there 
-            result = result.substring(1);
-        }
-        //adding negative
-        else if (result !== "" && result != "0") {
-            result = "-" + result;
-        }
-    }
-    else if (value === '%') {
-        result = (parseFloat(result) / 100).toString(); //toString to avoid confusing calculation with concatenation 
-    }
+    let toInt = 0;
+    let answer = 0; 
 
-    else {
-        scientificOperation(value, result);
-        result += value;
-    }
-    display.value = result;
-    cursorDisplay();
-}
-
-//function to handle scientific operations 
-
-//in progress
-function scientificOperation(value) {
-
-    let numResult = parseFloat(value);
-
-    //testing value
-    if(isNaN(numResult)){
-        return "error";
-    }
     switch (value) {
+        case '=':
+            try {
+                result = eval(result.trim()).toString();
+            } catch (e) {
+                result = "Error";
+            }
+            break;
+
+        case 'AC':
+            result = '';
+            break;
+
+        case '+/-':
+            if (result.startsWith("-")) {
+                // Removing negative sign if present
+                result = result.substring(1);
+            } else if (result !== "" && result !== "0") {
+                // Adding negative sign if not already negative
+                result = "-" + result;
+            }
+            break;
+
+        case '%':
+            result = (parseFloat(result) / 100).toString();
+            break;
+
         case 'Rand':
             result = Math.random().toFixed(8);
-            break
-        case 'sinh':
-            result = Math.sinh(numResult);
             break;
-        default:
-            return value;
-    }
 
+        case 'sinh':
+        case 'cosh':
+        case 'tanh':
+            toInt = parseFloat(result);
+            answer = (value === 'sinh' ? Math.sinh(toInt) : (value === 'cosh' ? Math.cosh(toInt): Math.tanh(toInt))).toExponential(6);
+            result = answer.replace("e+", "e");
+            break;
+
+        case 'π':
+            let piValue = Math.PI.toFixed(9);
+            result *=piValue;
+            break;
+
+        default:
+            result += value;  // Handles other values by appending to the result
+            break;
+    }
+    display.value = result;  // Updates the display with the current result
 }
+
 
 function cursorDisplay() {
     if (display.value.endsWith('|')) {
@@ -79,6 +81,7 @@ function cursorDisplay() {
     }
 }
 setInterval(cursorDisplay, 500);
+
 //Listening to use keyboard input
 function keyboardListener() {
 
@@ -86,9 +89,7 @@ function keyboardListener() {
         const keyValue = e.key;
 
         //keys to ignore: Do nothing when those keys are pressed
-        const modifierKeys = ['Control', 'Shift', 'Alt'];
-
-        if (modifierKeys.includes(keyValue)) {
+        if (['Control', 'Shift', 'Alt'].includes(keyValue)) {
             return;
         }
 
@@ -96,6 +97,7 @@ function keyboardListener() {
         const keyMap = {
             'Enter': '=',
             'Backspace': 'AC',
+            'Escape': 'AC'
         };
 
         //Handling ctrl = for selecting = sign and ctrl 8 for * 
