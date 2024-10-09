@@ -7,7 +7,7 @@ function calculator() {
     document.querySelector('.calculator').addEventListener('click', function (e) {
         if (e.target.tagName === 'BUTTON') {
             const buttonValue = e.target.textContent;
-            handleInput(buttonValue);
+            basicOperation(buttonValue);
         }
 
     });
@@ -15,25 +15,11 @@ function calculator() {
     keyboardListener();
 }
 
-
-function handleInput(value) {
+//function to handle basic operations
+function basicOperation(value) {
     //checking if the clicked element is a button
     if (value === '=') {
-        try {
-            //checking for sinh
-            if (result.includes("sinh(")) {
-                let insideValue = result.match(/sinh\(([^)]+)\)/)[1];
-                //getting value as a num since exp requires a num instead of string
-                let x = parseFloat(insideValue);
-                result = (Math.exp(x) - Math.exp(-x)) / 2;
-            }else{
-
-            result = eval(result.trim());
-        }
-        }
-        catch (e) {
-            result = 'Wrong input'
-        }
+        result = eval(result.trim());
     }
     else if (value === "AC") {
         result = '';
@@ -49,27 +35,40 @@ function handleInput(value) {
         }
     }
     else if (value === '%') {
-        result /= 100;
+        result = (parseFloat(result) / 100).toString(); //toString to avoid confusing calculation with concatenation 
     }
 
-    //generate random num from 0 - 1 using rand with 8 decimal places
-    else if (value === 'Rand') {
-        result = Math.random().toFixed(8);
-    }
-    else if (value === 'sinh') {
-       if(!result.includes('sinh(')){
-        result+="sinh()";
-       }
-
-    }
     else {
+        scientificOperation(value, result);
         result += value;
     }
     display.value = result;
     cursorDisplay();
 }
 
+//function to handle scientific operations 
 
+//in progress
+function scientificOperation(value) {
+
+    let numResult = parseFloat(value);
+
+    //testing value
+    if(isNaN(numResult)){
+        return "error";
+    }
+    switch (value) {
+        case 'Rand':
+            result = Math.random().toFixed(8);
+            break
+        case 'sinh':
+            result = Math.sinh(numResult);
+            break;
+        default:
+            return value;
+    }
+
+}
 
 function cursorDisplay() {
     if (display.value.endsWith('|')) {
@@ -101,11 +100,11 @@ function keyboardListener() {
 
         //Handling ctrl = for selecting = sign and ctrl 8 for * 
         if (e.ctrlKey && keyValue === '=') {
-            handleInput('=');
+            basicOperation('=');
             return;
         }
         else if (e.ctrlKey && keyValue === '8') {
-            handleInput('*');
+            basicOperation('*');
             return;
         }
 
@@ -116,7 +115,7 @@ function keyboardListener() {
 
         //Checking if user key is on the list
         if (keysAllowed.includes(keyValue) || keyValue in keyMap) {
-            handleInput(value);
+            basicOperation(value);
         }
         else {
             display.textContent = "Wrong Key";
