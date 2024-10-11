@@ -64,3 +64,9 @@ button{
 .operator{
     background-color: #ee9c04;
 }
+.clear,.lightBrwnbtns{
+   background-color: rgb(127, 107, 107);
+}
+.num{
+    background-color: rgb(37, 32, 32);
+}
