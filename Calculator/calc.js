@@ -90,6 +90,7 @@ function basicOperation(value) {
             display.setSelectionRange(position, position);
             display.focus();
             break;
+
         case 'π':
             let piValue = Math.PI.toFixed(8);
             result *= piValue;
@@ -107,55 +108,52 @@ function basicOperation(value) {
 function keyboardListener() {
 
     document.addEventListener('keydown', function (e) {
-        const keyValue = e.key;
-
-        const allowedCommands = ['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Enter', 'Escape'];
-        //Since enter and = are identical and Escape and Clear are identical, store them in different variables and chose them randomly
+        
+        let keyValue = e.key;
+        
         const keyMap = {
             'Enter': '=',
             'Backspace': 'AC',
-            'Escape': 'AC'
+            'Escape': 'AC',
+            'Shift+8': '*',
+            'Shift+=': '+'
         };
 
 
         //preventing invalid keys
-        if (!allowedCommands.includes(keyValue) && isNaN(Number(keyValue))&& keyValue !== '(' && keyValue !== ')') {
-            e.preventDefault();
+        if(e.shiftKey && keyValue === '8'){
+            keyValue = 'Shift+8';
+        }
+
+        if(e.shiftKey && keyValue === '+'){
+            keyValue = 'Shift+=';
+        }
+
+        //handling special keys
+        if(keyMap.hasOwnProperty(keyValue)){
+            const command = keyMap[keyValue];
+            basicOperation(command);
             return;
         }
-        //Ignoring control, shift, and alt
-        if (['Control', 'Shift', 'Alt'].includes(keyValue)) {
-            return;
-        };
-
         //handling parenthesis
-        if (keyValue === '(' || keyValue === ')') {
+        else if (keyValue === '(' || keyValue === ')') {
             basicOperation(keyValue);
             return;
 
         }
 
-        //Handling ctrl = for selecting = sign and ctrl 8 for * 
-        if (e.ctrlKey && keyValue === '=') {
-            basicOperation('=');
-            return;
-        }
-        else if (e.ctrlKey && keyValue === '8') {
-            basicOperation('*');
-            return;
+        const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '(', ')', '=', 'AC'];
+
+        if(keysAllowed.includes(keyValue)){
+            basicOperation(keyValue);
         }
 
-        //Choose identical keys randomly 
-        const command = keyMap[keyValue] || keyValue;
-
-        const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '=', 'Clear'];
-
-        //Checking if user key is on the list
-        if (keysAllowed.includes(command)) {
-            basicOperation(command);
+        else if(keyValue === 'Backspace'){
+            result = result.slice(0, -1);
+            display.value = result;
         }
-        else {
-            display.textContent = "Wrong Key";
+        else{
+            result = "Wrong Input"; 
         }
     });
 }
