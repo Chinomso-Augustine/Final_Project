@@ -12,7 +12,7 @@ function calculator() {
 
     });
     //Initializing keyboard listening 
-    keyboardListener();
+   // keyboardListener();
 }
 
 //function to handle basic operations
@@ -45,9 +45,7 @@ function basicOperation(value) {
                         result = answer.replace("e+", "e");
 
                     }
-                    else {
-                        result = "error";
-                    }
+                   
                 }
                 else {
                     result = eval(result.trim()).toString();
@@ -90,7 +88,6 @@ function basicOperation(value) {
             display.setSelectionRange(position, position);
             display.focus();
             break;
-
         case 'π':
             let piValue = Math.PI.toFixed(8);
             result *= piValue;
@@ -103,59 +100,58 @@ function basicOperation(value) {
     display.value = result;  // Updates the display with the current result
 }
 
-
+/*
 //Listening to use keyboard input
 function keyboardListener() {
 
     document.addEventListener('keydown', function (e) {
-        
-        let keyValue = e.key;
-        
+        const keyValue = e.key;
+
+        const allowedCommands = ['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Enter', 'Escape'];
+        //Since enter and = are identical and Escape and Clear are identical, store them in different variables and chose them randomly
         const keyMap = {
             'Enter': '=',
             'Backspace': 'AC',
-            'Escape': 'AC',
-            'Shift+8': '*',
-            'Shift+=': '+'
+            'Escape': 'AC'
         };
 
 
         //preventing invalid keys
-        if(e.shiftKey && keyValue === '8'){
-            keyValue = 'Shift+8';
-        }
-
-        if(e.shiftKey && keyValue === '+'){
-            keyValue = 'Shift+=';
-        }
-
-        //handling special keys
-        if(keyMap.hasOwnProperty(keyValue)){
-            const command = keyMap[keyValue];
-            basicOperation(command);
+        if (!allowedCommands.includes(keyValue) && isNaN(Number(keyValue))&& keyValue !== '(' && keyValue !== ')') {
+            e.preventDefault();
             return;
         }
+       
+ // Handling special keys
+ if (keyMap.hasOwnProperty(keyValue)) {
+    basicOperation(keyMap[keyValue]);
+    return;
+}
         //handling parenthesis
-        else if (keyValue === '(' || keyValue === ')') {
+        if (keyValue === '(' || keyValue === ')') {
             basicOperation(keyValue);
             return;
 
         }
 
-        const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '(', ')', '=', 'AC'];
+        //Handling ctrl = for selecting = sign and ctrl 8 for * 
+      
+        if (e.shiftKey && keyValue === '*') {
+            basicOperation('*');
+            return;
+        }
 
-        if(keysAllowed.includes(keyValue)){
+
+        const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '=', 'Clear'];
+
+        //Checking if user key is on the list
+        if (keysAllowed.includes(keyValue)) {
             basicOperation(keyValue);
         }
-
-        else if(keyValue === 'Backspace'){
-            result = result.slice(0, -1);
-            display.value = result;
-        }
-        else{
-            result = "Wrong Input"; 
+        else {
+            display.textContent = "Wrong Key";
         }
     });
 }
-
+*/
 calculator();
