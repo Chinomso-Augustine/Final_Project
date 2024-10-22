@@ -1,5 +1,6 @@
 const display = document.querySelector('.display');
 let result = "";
+let waitingForOperand = false;
 
 function calculator() {
 
@@ -7,51 +8,60 @@ function calculator() {
     document.querySelector('.calculator').addEventListener('click', function (e) {
         if (e.target.tagName === 'BUTTON') {
             const buttonValue = e.target.textContent;
-            basicOperation(buttonValue);
+            operation(buttonValue);
         }
 
     });
     //Initializing keyboard listening 
-   // keyboardListener();
+    // keyboardListener();
 }
 
 //function to handle basic operations
-function basicOperation(value) {
+function operation(value) {
     let toInt = 0;
     let answer = 0;
 
     switch (value) {
         case '=':
             try {
-                //check for sinh, cosh, and tanh
-                if (result.includes('sinh(') || result.includes('cosh(') || result.includes('tanh')) {
+                if (result.includes('sinh') || result.includes('cosh') || result.includes('tanh')) {
+                    //matching num after sinh
+                    const match = result.match(/(sinh|cosh|tanh)\(([^)]+)\)/) ||result.match(/(sinh|cosh|tanh)(\d+)/);
+                    if (match) {
+                        //extracting trig functions 
+                        const extractTrigFun = match[1];
+                        const numToCalc = parseFloat(match[2].trim());
 
-                    //capture the function name
-                    const trigOperator = result.substring(0, result.includes('('));
+                        //checking if numToCal is an actual number
+                        if (!isNaN(numToCalc)) {
+                            if (extractTrigFun === 'sinh') {
+                                answer = Math.sinh(numToCalc).toExponential(6);
+                            }
+                            else if (extractTrigFun === 'cosh') {
+                                answer = Math.cosh(numToCalc).toExponential(6);
+                            }
+                            else if (extractTrigFun === 'tanh') {
+                                answer = Math.tanh(numToCalc).toExponential(6);
+                            }
+                            result = answer.replace("e+", "e");
+                        }
 
-                    //capture the value b\w parenthesis using substring which extracts parts of strings b/w start and end
-                    //first: find index of opening parenthesis
-                    //2nd: find index of closing p
-                    const innerVal = result.substring(result.indexOf('(') + 1, result.indexOf(')'));
-
-                    //convert value to float
-                    toInt = parseFloat(innerVal);
-
-                    //calculate based on input
-                    if (!isNaN(toInt)) {
-                        answer = (trigOperator === 'sinh' ? Math.sinh(toInt) :
-                            (trigOperator === 'cosh' ? Math.cosh(toInt) :
-                                Math.tanh(toInt))).toExponential(6);
-                        result = answer.replace("e+", "e");
-
+                        else {
+                            result = "Error 1";//invalid number
+                        }
                     }
-                   
+                    else {
+                        result = "Error 2"; //No match found
+                    }
+
                 }
                 else {
+
                     result = eval(result.trim()).toString();
                 }
-            } catch (e) {
-                result = "Error";
+            }
+            catch (e) {
+                result = "Big Error";
             }
             break;
 
@@ -78,23 +88,38 @@ function basicOperation(value) {
             break;
 
         case 'sinh':
-        case 'cosh':
-        case 'tanh':
-
-            result += value + '()';
-            display.value = result;
-
-            const position = result.length - 1;
-            display.setSelectionRange(position, position);
-            display.focus();
+            result = "sinh";
+            waitingForOperand = true;
             break;
+
+
+        case 'cosh':
+            result = "cosh";
+            waitingForOperand = true;
+            break;
+
+        case 'tanh':
+            result = "tanh";
+            waitingForOperand = true;
+            break;
+
         case 'π':
             let piValue = Math.PI.toFixed(8);
-            result *= piValue;
+            toInt = parseFloat(result);
+            if (!isNaN(toInt)) {
+                result = (toInt * piValue)
+            } else {
+                result = piValue.toString();
+            }
             break;
 
         default:
-            result += value;  // Handles other values by appending to the result
+            if (waitingForOperand && !isNaN(value)) {
+                result += value;
+                waitingForOperand = false; // Reset the flag as we have the operand now
+            } else {
+                result += value;  // Handles other values by appending to the result
+            }
             break;
     }
     display.value = result;  // Updates the display with the current result
