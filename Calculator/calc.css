@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: black;
+    background-color: rgb(13, 13, 82);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,8 +13,7 @@ body{
     border: 2px solid white;
 }
 .calculator{
-    width: 43%;
-    max-width: 400px;
+    width: 450px;
     display:block;
     justify-content: center;
     align-items: center;
@@ -34,6 +33,7 @@ body{
     font-family: monospace;
     color: purple;
     position: relative;
+    border-radius: 10px;
 }
 
 button{
@@ -46,15 +46,15 @@ button{
 
 .scientificFuns button{
     font-size: 10px;
-    width: 44px;
-    height: 43px;
+    width: 12%;
+    height: 40px;
     border-radius: 25px;
     border: none;
     background-color: rgb(22, 20, 20);
 
 }
 .basicAndNumeric button{
-    width: 79px;
+    width: 92px;
     height: 50px;
     border-radius: 60px;
     border: none;
@@ -69,4 +69,20 @@ button{
 }
 .num{
     background-color: rgb(47, 40, 40);
+}
+.mode{
+    background-color: purple;
+}
+
+
+@media (max-width: 800px){
+    .calculator{
+        width: 60%;
+    }
+    .scientificFuns button{
+        width: 10%;
+    }
+    .basicAndNumeric button{
+        width: 19%;
+    }
 }
