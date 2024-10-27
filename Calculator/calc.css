@@ -53,6 +53,41 @@ button{
     background-color: rgb(22, 20, 20);
 
 }
+.radOrDeg{
+    display:inline-block;
+    background-color: rgb(22, 20, 20);
+    border-radius: 25px;
+    position: relative;
+   
+}
+.radOrDeg a{
+    display: block;
+    color: whitesmoke;
+    font-size: 13px;
+    text-decoration: none;
+    padding-right:2px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.radOrDeg .content{
+    display: none;
+    position: absolute;
+    background-color: rgba(28, 155, 155, 0.462);
+    min-width: 40px;
+    box-shadow: 2px 2px 5px rgb(241, 238, 238);
+    border-radius: 10px;
+    width: 70px;
+    top: 40px;
+}
+
+.radOrDeg:hover .content{
+   display: block;
+}
+   
+.radOrDeg a:hover{
+    background-color: rgb(172, 94, 94);
+}
 .basicAndNumeric button{
     width: 92px;
     height: 50px;
