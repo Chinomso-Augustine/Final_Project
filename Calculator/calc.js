@@ -26,7 +26,7 @@ function operation(value) {
             try {
                 if (result.includes('sinh') || result.includes('cosh') || result.includes('tanh')) {
                     //matching num after sinh
-                    const match = result.match(/(sinh|cosh|tanh)\(([^)]+)\)/) ||result.match(/(sinh|cosh|tanh)(\d+)/);
+                    const match = result.match(/(sinh|cosh|tanh)\(([^)]+)\)/) || result.match(/(sinh|cosh|tanh)(\d+)/);
                     if (match) {
                         //extracting trig functions 
                         const extractTrigFun = match[1];
@@ -43,15 +43,17 @@ function operation(value) {
                             else if (extractTrigFun === 'tanh') {
                                 answer = Math.tanh(numToCalc).toExponential(6);
                             }
-                            result = answer.replace("e+", "e");
+                                result = answer.replace("e+", "e");
+
+                            
                         }
 
                         else {
-                            result = "Error 1";//invalid number
+                            result = "Invalid number";
                         }
                     }
                     else {
-                        result = "Error 2"; //No match found
+                        result = "No match found";
                     }
 
                 }
@@ -92,7 +94,6 @@ function operation(value) {
             waitingForOperand = true;
             break;
 
-
         case 'cosh':
             result = "cosh";
             waitingForOperand = true;
@@ -113,6 +114,11 @@ function operation(value) {
             }
             break;
 
+        case 'x!':
+            result = "0!"; 
+            
+            break; 
+
         default:
             if (waitingForOperand && !isNaN(value)) {
                 result += value;
@@ -125,22 +131,25 @@ function operation(value) {
     display.value = result;  // Updates the display with the current result
 }
 
-function conversionOptions(userInput){
-    if(userInput === "Deg"){
-        convertToDegree(userInput);
-    }
-    else{
-        convertToRadians(userInput);
-    }
+function convertAngle(input, format) {
+    return format === "Deg" ? input * (Math.PI / 180) : input * (180 / Math.PI);
 }
 
-function convertToDegree(radians){
-    return radians * (180 / Math.PI); 
+function factorialRecursive(n){
+     if(n < 0){
+        return;
+     }
+
+     if(n === 0 || n === 1){
+        return 1; 
+     }
+
+     return n * factorialRecursive(n - 1); 
 }
 
-function convertToRadians(degree){
-return degree * (Math.PI / 180);
-}
+
+
+
 /*
 //Listening to use keyboard input
 function keyboardListener() {
