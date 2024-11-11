@@ -39,13 +39,13 @@ function operation(value) {
               else if (extractTrigFun === 'tanh') {
                 answer = Math.tanh(numToCalc);
               }
-              else if(extractTrigFun === 'sin'){
+              else if (extractTrigFun === 'sin') {
                 answer = Math.sin(numToCalc);
               }
-              else if(extractTrigFun === 'cos'){
+              else if (extractTrigFun === 'cos') {
                 answer = Math.cos(numToCalc);
               }
-              else if(extractTrigFun === 'tan'){
+              else if (extractTrigFun === 'tan') {
                 answer = Math.tan(numToCalc);
               }
               result = answer.toString().replace("e+", "e");
@@ -106,7 +106,7 @@ function operation(value) {
       waitingForOperand = true;
       break;
 
-      case 'sin':
+    case 'sin':
       result = "sin";
       waitingForOperand = true;
       break;
@@ -140,10 +140,10 @@ function operation(value) {
         const curNum = parseFloat(result.trim(), 10);
 
         //Ensure input is not negative
-        if (isNaN(curNum) ||  !Number.isInteger(curNum)) {
+        if (isNaN(curNum) || !Number.isInteger(curNum)) {
           result = "Choose number first";
         }
-        else if(curNum < 0 ){
+        else if (curNum < 0) {
           result = "Cannot be negative"
         } else {
           result = factorialRecursive(curNum);
@@ -153,6 +153,26 @@ function operation(value) {
       }
 
       break;
+
+    case 'e':
+      try {
+        const eNum = Math.E;
+        result = result * eNum;
+      }
+      catch (e) {
+        result = "Wrong e Calculation";
+      }
+      break;
+
+      case 'EE': 
+
+      
+
+
+
+
+
+
 
     default:
       if (waitingForOperand && !isNaN(value)) {
