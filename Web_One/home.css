@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    height: 100px;
+    background-color: rgb(242, 236, 242);
+}
+
+.headers{
+    display: inline-flex;
+    width: 15%;
+    margin-top: 40px;
+    justify-content: center;
+    color: rgb(62, 6, 62);
+    font-size: 30px;
+    font-style: bold;
+    font-family: sans-serif;
+}
