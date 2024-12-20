@@ -121,13 +121,14 @@ nav{
     background-color: white;
     border: none;
 }
-@media screen and (max-width:2000px) {
+@media screen and (max-width:1400px) {
     nav{
         background-color:rgb(50, 41, 50);
         display: flex;
         justify-content: center;
         align-items: center;
         padding-top: 2%;   
+        background-color: paleturquoise;
     }
 
 .logo{
