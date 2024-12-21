@@ -10,13 +10,7 @@ const date = new Date(userYearValue);
 
 //Getting real info
 const userYear = date.getFullYear();
-/* 
-const userMonth = date.getMonth() + 1; 
-const userWeek = userMonth * 4; 
-const userDay = date.getDay();
-const userHour = userDay * 24; 
-const userMinutes = userHour * 60; 
-*/
+
 
 //Year display
 const year = new Date().getFullYear() - userYear; 
@@ -30,8 +24,8 @@ document.getElementsByClassName("month")[0].textContent = month;
 const week = year * 52; 
 document.getElementsByClassName("week")[0].textContent= week; 
 
-//Days: 365.2425 but using 365 + 5. 5 for leap year
-const day = (year * 365) + 5; 
+//Days: 365.2425 but using 365
+const day = (year * 365); 
 document.getElementsByClassName("day")[0].textContent= day; 
 
 //Hours: 24 hr in day
