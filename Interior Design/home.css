@@ -1,29 +1,31 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: rgb(7, 1, 7);
 }
 
-nav{
+nav {
     height: 150px;
-    background-color:rgb(50, 41, 50);
+    background-color: rgb(35, 15, 35);
     display: block;
     justify-content: center;
     align-items: center;
     padding-top: 2%;
 }
 
-.logo{
+.logo {
     display: inline;
     margin-left: 12%;
     color: white;
     font-size: 45px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.middle{
+
+.middle {
     border-radius: 50px;
     display: inline-flex;
     width: 40%;
@@ -32,17 +34,19 @@ nav{
     margin-left: 6%;
     background-color: black;
 }
-.subHeaders{
+
+.subHeaders {
     display: inline-flex;
     width: 15%;
-    justify-content:center;
+    justify-content: center;
     color: white;
     margin-top: 15px;
     font-size: 25px;
     font-style: bold;
     font-family: sans-serif;
 }
-.middle2{
+
+.middle2 {
     margin-left: 3%;
     margin-right: 3%;
     display: inline-flex;
@@ -53,13 +57,15 @@ nav{
     font-size: 25px;
     font-family: sans-serif;
 }
-.fa-phone{
-    color:white;
+
+.fa-phone {
+    color: white;
     height: 20px;
     font-size: 20px;
     padding-top: 8%;
 }
-.right{
+
+.right {
     margin-left: 3%;
     margin-right: 3%;
     background-color: black;
@@ -73,24 +79,27 @@ nav{
     border-radius: 20px;
     padding-top: 10px;
 }
-.sec1{
+
+.sec1 {
     background-image: url("/Project Images/blackbrowncouch.webp");
     background-position: center;
-    background-size:contain ;
+    background-size: contain;
     width: 100%;
     height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.firstPage{
+
+.firstPage {
     text-align: center;
     height: 400px;
     width: 100%;
     justify-content: center;
     align-items: center;
 }
-.header1{
+
+.header1 {
     height: 60px;
     font-size: 100px;
     display: flex;
@@ -100,7 +109,8 @@ nav{
     font-family: monospace;
     font-weight: normal;
 }
-.welcome{
+
+.welcome {
     height: 20px;
     font-size: 20px;
     justify-content: center;
@@ -110,7 +120,8 @@ nav{
     font-size: 16px;
     margin-top: 90px;
 }
-.btn1{
+
+.btn1 {
     font-size: 20px;
     display: inline;
     font-family: sans-serif;
@@ -121,42 +132,91 @@ nav{
     background-color: white;
     border: none;
 }
+
 @media screen and (max-width:1400px) {
-    nav{
-        background-color:rgb(50, 41, 50);
+    nav {
+        background-color: rgb(50, 41, 50);
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 2%;   
+        padding-top: 2%;
         background-color: paleturquoise;
     }
 
-.logo{
-    font-size: 30px; 
-    margin-left: 3%; 
+    .logo {
+        font-size: 30px;
+        margin-left: 3%;
+    }
+
+    .middle {
+        width: 50%;
+        height: 55%;
+    }
+
+    .subHeaders {
+        width: 15%;
+        font-size: 20px;
+        padding: 10px;
+
+    }
+
+    .fa-phone {
+        height: 20px;
+        font-size: 15px;
+        padding-right: 5px;
+    }
+
+    .middle2 {
+        padding-top: 1%;
+        font-size: 20px;
+    }
+
+    .right {
+        font-size: 15px;
+    }
+}
+.sec2 {
+    color: white;
+    border: 2px solid red;
+}
+.header2{
+    border: 2px solid green;
+    width: 100%;
+    display:block;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-family: monospace;
+    font-weight: normal;
+    font-size: 80px;
+}
+.sec2Div1 {
+    border: 2px solid white;
+    width: 45%;
+    height: 800px;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    margin-left: 40px;
 }
 
-.middle{
-    width: 50%;
-    height: 55%;
+.sec2Div2,.sec2Div3 {
+    border: 2px solid red;
+    height: 400px;
+    width: 40%;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 30px;
 }
 
-.subHeaders{
-    width: 15%;
-    font-size: 20px;
-    padding: 10px;
+.sec2Frame{
+    border: 2px solid blue;
+    display: inline;
+    width: 10%;
+    height: 800px;
+    justify-content: center;
+    text-align: center;
     
 }
-.fa-phone{
-    height: 20px;
-    font-size: 15px;
-    padding-right: 5px;
-}
-.middle2{
-    padding-top: 1%;
-    font-size: 20px;
-}
-.right{
-    font-size: 15px;
-}
-}
+
