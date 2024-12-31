@@ -23,7 +23,7 @@ section {
 }
 
 div {
-    width: 50%;
+    width: 65%;
     height: 100px; 
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@ div {
     box-shadow:3px 2px 1px 3px ;
 }
 .age{
-    font-size: 2vw;
+    font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: purple;
     text-transform: uppercase;
@@ -42,7 +42,7 @@ div {
 }
 
 h2 {
-    font-size: 1.5vw;
+    font-size: 27px;
     font-family: sans-serif;
     color: rgb(11, 11, 161);
 }
@@ -52,7 +52,7 @@ h2 {
 }
 
 #yearBorn {
-    font-size: 2vw;
+    font-size: 23px;
     background-color:rgb(70, 1, 70);
     border-radius: 13px;
     color: white;
@@ -73,4 +73,14 @@ h2 {
     color: rgb(84, 3, 84);
     font-size: 20px;
     font-family: sans-serif;
+}
+@media (max-width:1000px){
+    .age,h2,#yearBorn,.submitBtn{
+        font-size: 3vw;
+    }
+
+.year,.month,.week,.day,.hour,.minute{
+    font-style: 2vw;
+}
+   
 }
