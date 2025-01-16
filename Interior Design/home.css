@@ -193,7 +193,7 @@ nav {
     color: white;
     font-family: monospace;
     font-weight: normal;
-    font-size: 70px;
+    font-size: 60px;
 }
 
 .sec2Frame{
@@ -218,10 +218,10 @@ nav {
     position: relative;  
     
 }
-.sec2Div1:hover{
+.sec2Div1{
     background-image: url("/Project Images/minicouch.webp");
-    background-size:cover;
-    opacity: 1;
+   /**/background-size:cover;
+    opacity: 1
 }
 h3{
     font-family:Georgia, 'Times New Roman', Times, serif;
