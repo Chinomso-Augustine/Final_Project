@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid Practice</title>
+    <link href="bootstrap.css" rel="stylesheet"> <!--Bootstrap CSS File-->
+</head>
+
+<body>
+    <div class="container"> <!--Container used to center the content-->
+        <div class="row"> <!--Row used to create a row-->
+            <div class="col-12"> <!--Full width col that occupies 12 out of the 12 grid spaces-->
+                <div class="text-center"> <!--Center the text-->
+                    <img src="Zingo.png" class="img-fluid w-25 mt-5 rounded-circle">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h1 class="mt-5 mb-4" style="color: purple;">Our Menu</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6"> <!--Half width col that occupies 6 out of the 12 grid spaces on large screens-->
+                <h2>Falafel</h2>
+                <p>Chickpea, herbs, spices</p>
+                <h2>Fried Calamari</h2>
+                <p>Squid, buttermilk</p>
+            </div>
+            <div class="col-12 col-lg-6"> <!--Half width col that occupies 6 out of the 12 grid spaces on large screens-->
+                <h2>Pasta Salad</h2>
+                <p>Lettuce, vegetables, mozzarella</p>
+                <h2>Greek Salad</h2>
+                <p>Cucumbers, onion, feta cheese</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap.js"></script>
+</body>
+
+</html>
