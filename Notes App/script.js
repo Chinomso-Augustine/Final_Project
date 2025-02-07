@@ -1,4 +1,6 @@
 
+const myNoteArray = [ ]; 
+
 
 /*Saving Note Process 
 
@@ -16,11 +18,14 @@ function saveNote(){
     let newNote = document.createElement('div');// create new note box (div) where the notes will be store
     newNote.textContent = inputValue; //put the notes inside the box (div)
 
+    let dateCreated = new Date().toLocaleString(); //creating new date (current date)  and time
+    myNoteArray.push({notes: inputValue, noteDate:dateCreated}); //Push in note and date to array. 
+
     let deleteBtn = document.createElement('button');//Creates delete btn
     deleteBtn.textContent = "Delete"; //Set's btn to display Delete
 
     deleteBtn.onclick = function (){ //Deletes notes next to delete when delete is clicked.
-        deleteNote(newNote); 
+        deleteNote(inputValue, dateCreated, newNote); 
 
     };
 
@@ -34,6 +39,6 @@ function saveNote(){
 
 //Delete
 
-function deleteNote(newNote){
-    newNote.remove();
+function deleteNote(inputValue, dateCreated, newNote){
+    myNoteArray.notes.remove();
 }
