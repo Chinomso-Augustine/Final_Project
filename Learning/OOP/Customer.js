@@ -1,5 +1,5 @@
 
-//Class-> contains className, constructor to be called, method to be accessed and nore
+//Class-> contains className, constructor to be called, method to be accessed and more
 class Customer{
     //constructor to initialize customers with property and use when class is called
     constructor(name, email, phone){
