@@ -4,7 +4,7 @@ class Student {
     constructor(name, age) {
         this.name = name;
         this.age = age;
-        this.grades = [];
+        this.grades = []; //variable to store all grades
     }
 
     //Method to add grade 
@@ -24,15 +24,17 @@ class Student {
         return average;
     }
 */ 
-    //method of returning average grade using reduce() which reduces array to a single value; 
+    
+
+//method of returning average grade using reduce() which reduces array to a single value; 
     //array.reduce(accumulator, currrentValue) => () 
     getAverageGrade() {
         let sum = this.grades.reduce((totalSum, num) => totalSum + num, 0); //(totalSum, num)= initialization. totalSum + num: takes num, which is the current value in the array, and add it to totalSum, which stores the sum. 0 initialize totalSum with 0 before the accumulation begins
         return sum / this.grades.length;
     }
-    //Method to info
+    //Method to display info
     displayStudentInfo() {
-        console.log(`${this.name}: ${this.age}: ${this.grades}, ${this.getAverageGrade()}`)
+        console.log(`Name: ${this.name}, \nAge: ${this.age}, \nGrades: ${this.grades}, \nAverage Grade: ${this.getAverageGrade()}`)
     }
 
 }
