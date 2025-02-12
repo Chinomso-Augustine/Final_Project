@@ -3,7 +3,6 @@ const myNoteArray = [ ];
 
 
 /*Saving Note Process 
-
 1. Note is typed and button is pressd
 2. JS grab the text
 3. Create a new note box
@@ -40,5 +39,18 @@ function saveNote(){
 //Delete
 
 function deleteNote(inputValue, dateCreated, newNote){
-    myNoteArray.notes.remove();
+    let indexToDelete = myNoteArray.findIndex(note => noteToDelete(note, inputValue, dateCreated));
+
+    //Now check if the note is found, and removed it
+    if(indexToDelete != -1){
+        myNoteArray.splice(indexToDelete, 1); //Go to my array and delete indexToDelete by 1; 
+    }
+    //Now remove it
+    newNote.remove(); 
+
+}
+
+//Function to check if note and date matches
+function noteToDelete(note, inputValue, dateCreated){
+    return note.notes === inputValue && note.noteDate === dateCreated; 
 }
