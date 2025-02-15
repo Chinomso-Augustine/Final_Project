@@ -1,33 +1,37 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-nav{
-    background-color:salmon;
+
+nav {
+    background-color: salmon;
     display: flex;
-    position:static;
-    height:80px;
-    color:white;
+    position: static;
+    height: 80px;
+    color: white;
     justify-content: center;
     align-items: center;
-    
+
 }
-h3{
-    margin:60px;
+
+h3 {
+    margin: 60px;
     font-size: 30px;
 }
-body{
+
+body {
     background-color: wheat;
 }
-.frame
-{
-    display:flex;
+
+.frame {
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
 }
-#addTaskBtn{
+
+#addTaskBtn {
     width: 70px;
     height: 50px;
     margin-left: 10px;
@@ -36,11 +40,20 @@ body{
     color: purple;
     background-color: white;
     font-size: 16px;
+    cursor: pointer;
 }
-.typeBox{
+
+.typeBox {
     width: 80%;
-    height:50px;
+    height: 50px;
     font-size: 20px;
     border: none;
     border-radius: 10px;
+}
+
+.addBtn {
+    width: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+
 }
