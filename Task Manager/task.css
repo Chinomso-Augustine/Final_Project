@@ -18,6 +18,10 @@ nav {
 h3 {
     margin: 60px;
     font-size: 30px;
+    cursor: pointer;
+}
+h3:hover{
+    
 }
 
 body {
@@ -34,26 +38,63 @@ body {
 #addTaskBtn {
     width: 70px;
     height: 50px;
-    margin-left: 10px;
+    margin-left: 1%;
     border-radius: 20px;
-    border: none;
     color: purple;
-    background-color: white;
-    font-size: 16px;
+    font-size: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    border: 4px groove purple;
     cursor: pointer;
+    background-color: whitesmoke;
 }
 
 .typeBox {
-    width: 80%;
+    width: 70%;
     height: 50px;
-    font-size: 20px;
+    font-size: 28px;
     border: none;
     border-radius: 10px;
 }
 
-.addBtn {
-    width: 20px;
-    margin-left: 50px;
-    margin-top: 20px;
+.typeBox::placeholder{
+    color: purple;
+    padding-left: 20px;
 
+}
+.checkBtn {
+    width: 2%;
+    margin-left: 8%;
+    margin-top: 50px;
+}
+span{
+    color:purple;
+    font-size: 25px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#dueDateBtn{
+    width: 140px;
+    height: 50px;
+    margin-left: 2%;
+    color: purple;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    border: 4px groove purple;
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.deleteBtn,.dueDateDisplay,.dateCreatedBtn{
+    color: purple;
+    width: 80px;
+    height: 30px;
+    font-size: 100%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    border: 4px groove purple;
+    margin-left: 30px;
+    cursor: pointer;
+    background-color: whitesmoke;
 }

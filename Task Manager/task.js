@@ -3,11 +3,13 @@
 let tasks = [];
 
 class Task {
-    constructor(text) {
+    constructor(text, dueDate) {
         this.text = text;
+        this.dueDate = dueDate? dueDate: "No Due Date Set";
         this.dateCreated = new Date().toLocaleString();
         this.completed = false;
         this.id = Date.now(); //Id for task
+      
     }
 
     //Toggle method
@@ -21,19 +23,17 @@ class Task {
 
         let checkBox = document.createElement('input'); //Creates checkBox 
         checkBox.setAttribute('type', 'checkbox');
+        checkBox.classList.add("checkBtn");//checkbox class for styling the btn
+        checkBox.checked = this.completed; //Set checkBox = completion(this is currently false)
 
-        checkBox.classList.add("addBtn");
-
-        checkBox.checked = this.completed; //Set checkBox based on task completion
-
-        let taskText = document.createElement('span'); //span for task
-        taskText.textContent = this.text;
+        let taskText = document.createElement('span'); //creating span for easy styling 
+        taskText.textContent = this.text;//sets taskText to the input text
         taskText.style.textDecoration = this.completed ? "line-through" : "none"; //Checks if text is completed, if true, cross it
 
         let taskDeleteBtn = document.createElement('button');
         taskDeleteBtn.textContent = "Delete";//delete btn
-
-        taskDeleteBtn.onclick =() => {
+        taskDeleteBtn.classList.add("deleteBtn"); //Delete button for styling
+        taskDeleteBtn.onclick = () => { //deletes text after clicked
             deleteTask(this);
         };
 
@@ -42,9 +42,22 @@ class Task {
             taskText.style.textDecoration = this.completed ? "line-through" : "none"; //Checks if text is completed, if true, cross it
 
         })
+
+        let dateCreated = document.createElement('span') ; //for date created
+        dateCreated.textContent= `Created: ${this.dateCreated}`;//captures date Info
+        dateCreated.classList.add("dateCreatedBtn"); //class for styling
+
+
+        let dueDate = document.createElement('span'); //for due date
+        dueDate.textContent = `Due Date: ${this.dueDate}`; 
+        dueDate.classList.add("dueDateDisplay"); 
+
+
         list.appendChild(checkBox); //Add checkbox to list
         list.appendChild(taskText); //add tasktext to list
-        list.appendChild(taskDeleteBtn); 
+        list.appendChild(dateCreated);
+        list.appendChild(dueDate); 
+        list.appendChild(taskDeleteBtn);
         return list; //returns the list
     }
 
@@ -52,20 +65,26 @@ class Task {
 }
 
 function addTask() {
-    let inputText = document.getElementById('taskInput').value.trim();
-    if (inputText === "") {
-        return;
-    }
-    let newTask = new Task(inputText); //Creates new task object/instance of object
-    tasks.push(newTask); //Pushing to tasks
+    let inputText = document.getElementById('taskInput').value.trim();//Getting text input 
+    let dueDate = document.getElementById('dueDateBtn').value.trim();  //Due date Input
 
-    let taskList = document.getElementById('taskList'); //gets task list container
-    taskList.appendChild(newTask.TaskCreator()); // Append new task
+    if (inputText === "") {
+        return; //returns nothing if input is empty
+    }
+
+    let newTask = new Task(inputText, dueDate); //pass text and due date to Task
+    tasks.push(newTask); //Pushing text and duedate into tasks
+
+    let taskList = document.getElementById('taskList'); //gets taskList and store it in a new variable
+    taskList.appendChild(newTask.TaskCreator()); // Append newTask inside taskList
 
     document.getElementById('taskInput').value = ""; //Clears input field
-}
-document.getElementById('addTaskBtn').addEventListener('click', addTask);
+    document.getElementById('dueDate').value = ""; //Clears duedate field
 
+}
+
+
+document.getElementById('addTaskBtn').addEventListener('click', addTask);
 
 //Delete Task function 
 function deleteTask(task) {
@@ -80,10 +99,10 @@ function deleteTask(task) {
 }
 
 function clearTaskList() {
-   let taskList =  document.getElementById('taskList');
-   taskList.innerHTML = "";
+    let taskList = document.getElementById('taskList');
+    taskList.innerHTML = "";
 
     tasks.forEach(task => {
         taskList.appendChild(task.TaskCreator());
-    } );
+    });
 }
