@@ -1,6 +1,7 @@
 
 
 let tasks = [];
+document.getElementById("toggleHistoryBtn").addEventListener("click", toggleHistory); //for activating toggleHistory
 
 class Task {
     constructor(text, dueDate) {
@@ -17,7 +18,8 @@ class Task {
     toggleComplete() {
         this.completed = !this.completed; //since task was initialized with false, we change to true
         this.dateCompleted = this.completed ? new Date().toLocaleString() : null;
-        updateHistory();
+        updateHistory();//For updating history
+        clearTaskList(); //for refreshing task
     }
 
     //HTML generator Method
@@ -36,9 +38,7 @@ class Task {
         let taskDeleteBtn = document.createElement('button');
         taskDeleteBtn.textContent = "Delete";//delete btn
         taskDeleteBtn.classList.add("deleteBtn"); //Delete button for styling
-        taskDeleteBtn.onclick = () => { //deletes text after clicked
-            deleteTask(this);
-        };
+        taskDeleteBtn.onclick = () => {deleteTask(this)};
 
         checkBox.addEventListener('change', () => {
             this.toggleComplete(); //Updates checkbox
@@ -70,14 +70,10 @@ class Task {
 function addTask() {
     let inputText = document.getElementById('taskInput').value.trim();//Getting text input 
     let dueDateInput = document.getElementById('dueDateBtn').value.trim();  //Due date Input
-    let currentDate = new Date().toISOString(); //Ensures YYYY-MM-DD format
+    let currentDate = new Date().toISOString();
 
-    if (inputText === "") {
-        return; //returns nothing if input is empty
-    }
-
-    //let dueDate = dueDateInput || currentDate; // If empty, default to today
-
+    if (inputText === "") return; //returns nothing if input is empty
+    
     let newTask = new Task(inputText, dueDateInput); //pass text and due date to Task
     tasks.push(newTask); //Pushing text and duedate into tasks
 
@@ -88,7 +84,6 @@ function addTask() {
     document.getElementById('dueDateBtn').value = currentDate; //Clears duedate field
 
 }
-
 
 document.getElementById('addTaskBtn').addEventListener('click', addTask);
 
@@ -111,30 +106,31 @@ function clearTaskList() {
     tasks.forEach(task => {
         taskList.appendChild(task.TaskCreator());
     });
+    updateHistory();//Updates history after task is cleared
 }
 
 //function to show history 
 function toggleHistory() {
     updateHistory(); 
     let history = document.getElementById('historyList');
-    if (history.style.display == "none" || history.style.display == "") {
-        history.style.display = "block";
+    history.style.display = history.style.display === "none" || history.style.display === ""? "block":history.style.display = "none";
     }
-    else {
-        history.style.display = "none";
-    }
-}
 
 function updateHistory() {
     let historyList = document.getElementById('historyList'); //Getting history input
     historyList.innerHTML = ""; //Clearing before updating
-    tasks.forEach(task => {
-        if (task.completed) { //Checks if task is completed 
+
+    let completedTasks = tasks.filter(task => task.completed);
+    if(completedTasks.length === 0){
+        historyList.innerHTML = "<li> No completed tasks yet</li>";
+        return; 
+    }
+
+    completedTasks.forEach(task => {
+         //Checks if task is completed 
             let tasksInHistory = document.createElement('li');
             tasksInHistory.textContent = `${task.text} was completed on ${task.dateCompleted ?task.dateCompleted: "Date Not Available"}`;
             historyList.appendChild(tasksInHistory);
-        }
-
-    })
+    });
 
 }
