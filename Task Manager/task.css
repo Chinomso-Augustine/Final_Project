@@ -8,9 +8,9 @@ nav {
     background-color: salmon;
     display: flex;
     position: static;
-    height: 80px;
+    height: 100px;
     color: white;
-    justify-content: center;
+    justify-content:space-evenly;
     align-items: center;
 
 }
@@ -19,9 +19,6 @@ h3 {
     margin: 60px;
     font-size: 30px;
     cursor: pointer;
-}
-h3:hover{
-    
 }
 
 body {
@@ -36,7 +33,7 @@ body {
 }
 
 #addTaskBtn {
-    width: 70px;
+    width: 100px;
     height: 50px;
     margin-left: 1%;
     border-radius: 20px;
@@ -97,4 +94,5 @@ span{
     margin-left: 30px;
     cursor: pointer;
     background-color: whitesmoke;
+    padding: 2px;
 }

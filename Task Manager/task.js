@@ -66,20 +66,24 @@ class Task {
 
 function addTask() {
     let inputText = document.getElementById('taskInput').value.trim();//Getting text input 
-    let dueDate = document.getElementById('dueDateBtn').value.trim();  //Due date Input
+    let dueDateInput = document.getElementById('dueDateBtn').value.trim();  //Due date Input
+    let currentDate = new Date().toISOString(); //Ensures YYYY-MM-DD format
 
     if (inputText === "") {
         return; //returns nothing if input is empty
     }
 
-    let newTask = new Task(inputText, dueDate); //pass text and due date to Task
+    //let dueDate = dueDateInput || currentDate; // If empty, default to today
+
+    let newTask = new Task(inputText, dueDateInput); //pass text and due date to Task
     tasks.push(newTask); //Pushing text and duedate into tasks
 
     let taskList = document.getElementById('taskList'); //gets taskList and store it in a new variable
     taskList.appendChild(newTask.TaskCreator()); // Append newTask inside taskList
+    
 
     document.getElementById('taskInput').value = ""; //Clears input field
-    document.getElementById('dueDate').value = ""; //Clears duedate field
+    document.getElementById('dueDateBtn').value = currentDate; //Clears duedate field
 
 }
 
