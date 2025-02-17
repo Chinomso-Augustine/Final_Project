@@ -5,16 +5,19 @@ let tasks = [];
 class Task {
     constructor(text, dueDate) {
         this.text = text;
-        this.dueDate = dueDate? dueDate: "No Due Date Set";
+        this.dueDate = dueDate ? dueDate : "No Due Date Set";
         this.dateCreated = new Date().toLocaleString();
         this.completed = false;
         this.id = Date.now(); //Id for task
-      
+        this.dateCompleted = null;
+
     }
 
-    //Toggle method
+    //Toggle method when task is completed
     toggleComplete() {
-        this.completed = !this.completed; //Flips the state of the completion. Specially when clicked multiple times 
+        this.completed = !this.completed; //since task was initialized with false, we change to true
+        this.dateCompleted = this.completed ? new Date().toLocaleString() : null;
+        updateHistory();
     }
 
     //HTML generator Method
@@ -43,20 +46,20 @@ class Task {
 
         })
 
-        let dateCreated = document.createElement('span') ; //for date created
-        dateCreated.textContent= `Date Created: ${this.dateCreated}`;//captures date Info
+        let dateCreated = document.createElement('span'); //for date created
+        dateCreated.textContent = `Date Created: ${this.dateCreated}`;//captures date Info
         dateCreated.classList.add("dateCreatedBtn"); //class for styling
 
 
         let dueDate = document.createElement('span'); //for due date
-        dueDate.textContent = `Due Date: ${this.dueDate}`; 
-        dueDate.classList.add("dueDateDisplay"); 
+        dueDate.textContent = `Due Date: ${this.dueDate}`;
+        dueDate.classList.add("dueDateDisplay");
 
 
         list.appendChild(checkBox); //Add checkbox to list
         list.appendChild(taskText); //add tasktext to list
         list.appendChild(dateCreated);
-        list.appendChild(dueDate); 
+        list.appendChild(dueDate);
         list.appendChild(taskDeleteBtn);
         return list; //returns the list
     }
@@ -80,7 +83,6 @@ function addTask() {
 
     let taskList = document.getElementById('taskList'); //gets taskList and store it in a new variable
     taskList.appendChild(newTask.TaskCreator()); // Append newTask inside taskList
-    
 
     document.getElementById('taskInput').value = ""; //Clears input field
     document.getElementById('dueDateBtn').value = currentDate; //Clears duedate field
@@ -109,4 +111,30 @@ function clearTaskList() {
     tasks.forEach(task => {
         taskList.appendChild(task.TaskCreator());
     });
+}
+
+//function to show history 
+function toggleHistory() {
+    updateHistory(); 
+    let history = document.getElementById('historyList');
+    if (history.style.display == "none" || history.style.display == "") {
+        history.style.display = "block";
+    }
+    else {
+        history.style.display = "none";
+    }
+}
+
+function updateHistory() {
+    let historyList = document.getElementById('historyList'); //Getting history input
+    historyList.innerHTML = ""; //Clearing before updating
+    tasks.forEach(task => {
+        if (task.completed) { //Checks if task is completed 
+            let tasksInHistory = document.createElement('li');
+            tasksInHistory.textContent = `${task.text} was completed on ${task.dateCompleted ?task.dateCompleted: "Date Not Available"}`;
+            historyList.appendChild(tasksInHistory);
+        }
+
+    })
+
 }

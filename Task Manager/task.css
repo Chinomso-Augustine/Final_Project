@@ -96,3 +96,17 @@ span{
     background-color: whitesmoke;
     padding: 2px;
 }
+.history{
+    border: 2px solid purple;
+    display: grid;
+    grid-template-columns: auto;
+    margin-left: 70%;
+    margin-right: 2%;
+
+}
+#toggleHistoryBtn{
+    font-size: 30px;
+}
+#historyList{
+    display: none;
+}
