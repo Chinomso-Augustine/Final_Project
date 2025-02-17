@@ -44,7 +44,7 @@ class Task {
         })
 
         let dateCreated = document.createElement('span') ; //for date created
-        dateCreated.textContent= `Created: ${this.dateCreated}`;//captures date Info
+        dateCreated.textContent= `Date Created: ${this.dateCreated}`;//captures date Info
         dateCreated.classList.add("dateCreatedBtn"); //class for styling
 
 
