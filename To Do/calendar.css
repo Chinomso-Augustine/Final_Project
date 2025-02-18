@@ -4,6 +4,50 @@
     box-sizing: border-box;
 }
 body{
- 
+min-height: 100px;
     background-color: salmon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar{
+    width: 400px;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 20px;
+    background:rgb(187, 85, 187);
+    box-shadow: 0 0 10px rgba(0,0,0.3);
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 10px;
+}
+.header button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background:white;
+    cursor: pointer;
+    width: 40px;
+    height: 40px; 
+    box-shadow: 0 0 4px rgba(0, 0, 0.2);
+}
+
+.days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.day{
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-weight: 40px;
 }
