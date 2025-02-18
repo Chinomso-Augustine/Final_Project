@@ -12,27 +12,28 @@
     <nav>
         <h3>ZinGo</h3>
         <h3>Welcome</h3>
-        <h3>About Chino</h3>    
+        <h3>About Chino</h3>
     </nav>
 
     <div class="frame">
-        <input type="text"  id="taskInput" class="typeBox" placeholder="Type your Task">
+        <input type="text" id="taskInput" class="typeBox" placeholder="Type your Task">
         <input type="date" id="dueDateBtn">
         <button id="addTaskBtn">Add Task</button>
     </div>
 
-    
-    <!--Where all task will be added-->
-    <ul id="taskList">
+<div class="frame2">
+    <div class="taskDiv">
+        <!--Where all task will be added-->
+        <ul id="taskList"></ul>
+    </div>
 
-    </ul>
-
-
-<div class="history">
-    <button id="toggleHistoryBtn">View Completed Task
-    </button>
-    <ul id="historyList"></ul>
+    <div class="history">
+        <button id="toggleHistoryBtn">View Completed Task</button>
+        <ul id="historyList"></ul>
+    </div>
 </div>
+
+
 
     <script src="task.js"> </script>
 </body>

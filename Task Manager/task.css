@@ -85,7 +85,6 @@ span{
 
 .deleteBtn,.dueDateDisplay,.dateCreatedBtn{
     color: purple;
-    width: 80px;
     height: 30px;
     font-size: 100%;
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -95,23 +94,35 @@ span{
     cursor: pointer;
     background-color: whitesmoke;
     padding: 2px;
-}
-.history{
-    border: 2px solid purple;
-    display: grid;
-    grid-template-columns: auto;
-    margin-left: 70%;
-    margin-right: 2%;
-
+    display: inline;
 }
 #toggleHistoryBtn{
     font-size: 30px;
     color: white;
     background-color: salmon;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
 #historyList{
     display: none;
-    color: purple;
-    font-size: 16px;
+    color:purple;
+    font-size: 20px;
+    padding:10px;
+    font-family:'Times New Roman', Times, serif;
+}
+.frame2{
+    display: flex;
+    margin-top: 10px;
+    justify-content:space-around;
+    align-items:flex-start;
+}
+
+.taskDiv{
+    flex: 75%;
+    
+}
+
+.history{
+    flex: 17%;
+    margin-top: 2%;
 }
