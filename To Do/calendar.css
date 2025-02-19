@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-min-height: 100px;
+    min-height: 100vh;
     background-color: salmon;
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@ min-height: 100px;
 }
 
 .calendar{
-    width: 400px;
+    width: 600px;
     height:auto;
     display: flex;
     flex-direction: column;
@@ -24,9 +24,18 @@ min-height: 100px;
 
 .header{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center; 
     padding: 10px;
+}
+.monthYear{
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 300px;
+    height: auto;
+    font-size: 30px;
+    color:whitesmoke;
+    display: flex;
 }
 .header button{
     display: flex;
@@ -50,4 +59,35 @@ min-height: 100px;
     padding: 5px;
     color: white;
     font-weight: 40px;
+}
+.dates{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.date{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    transition: 0.3s;
+    color:navajowhite;
+}
+
+.date:hover, .date.active{
+    background:white ;
+    color: blue;
+}
+.date.inactive{
+    color: white;
+}
+.date.inactive:hover{
+    color: red;
 }
