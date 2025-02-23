@@ -20,4 +20,4 @@ function letterFinder(word, match){
     }
 }
 letterFinder(3, 4); //wrong arguments for testing
-letterFinder("cat", "c"); //correct argument
+letterFinder("cat", "a"); //correct argument

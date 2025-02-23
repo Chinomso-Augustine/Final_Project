@@ -1,4 +1,6 @@
 
+
+//class practice
 //Class-> contains className, constructor to be called, method to be accessed and more
 class Customer{
     //constructor to initialize customers with property and use when class is called

@@ -3,14 +3,14 @@ const datesElement = document.getElementById('dates');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
-let currentDate = new Date(); 
+let currentDate = new Date(); //current date and time
 
 const updateCalendar = () => {
-    const currentYear = currentDate.getFullYear(); 
-    const currentMonth = currentDate.getMonth(); 
+    const currentYear = currentDate.getFullYear(); //Gets current Year
+    const currentMonth = currentDate.getMonth(); //gets current month
     
-    const firstDay = new Date(currentYear, currentMonth, 1);
-    const lastDay = new Date(currentYear, currentMonth + 1, 0); 
+    const firstDay = new Date(currentYear, currentMonth, 1);//date object for first day of the month
+    const lastDay = new Date(currentYear, currentMonth + 1, 0); //last day of the month
     const totalDays = lastDay.getDate(); 
     const firstDayIndex = (firstDay.getDay() === 0) ? 6 : firstDay.getDay() - 1;
     const lastDayIndex = lastDay.getDay(); 

@@ -2,7 +2,8 @@
 
 //Bank accounted example where balance cannot directly be accessed but modify using method.
 class BankAccount{
-    #balance; //private 
+    #balance; //private and cannot be access or change directly from outside this class
+
     constructor(accountNum, balance){
         this.accountNum = accountNum; 
         this.#balance = balance;
@@ -23,7 +24,11 @@ class BankAccount{
     withdraw(amount){
         if(amount > 0 && amount <=this.#balance){
             this.#balance -=amount; 
+            console.log(`$${amount} was withdrawn from your account`)
+        }
+        else{
             console.log("Invalid withdrawal amount"); 
+
         }
     }
 
@@ -36,5 +41,5 @@ class BankAccount{
 //instance of BankAccount
 const myAccount = new BankAccount("123456", 1000); 
 myAccount.deposit(500); 
-myAccount.withdraw(300); 
+myAccount.withdraw(1000); 
 console.log(`Balance: $${myAccount.getBalance()}`); 
