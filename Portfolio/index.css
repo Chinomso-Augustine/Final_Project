@@ -56,18 +56,26 @@ nav{
     padding: 10px;
     justify-content: center;
 }
-.proj, .resume{
+.proj, .resume, .myResume{
 border: 2px solid orange;
 font-size: 30px;
 padding:6px;
 color: orange;
 cursor: pointer;
+text-decoration: none;
 
 }
 .resume{
     margin-left: 50px;
 }
+.myResume{
+    border: none;
+}
 
+.myResume:hover{
+    color: whitesmoke;
+    border: whitesmoke;
+}
 /*
 Beginning of section 1
 */
