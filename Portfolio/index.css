@@ -1,125 +1,145 @@
-
-
-body{
-background-color: #0d1117;
-color: white;
+body {
+    background-color: #0d1117;
+    color: white;
 }
 
-nav{
+nav {
     border: 2px solid red;
     height: 300px;
     width: 100%;
     display: flex;
-    background-color:#05152b;
+    background-color: #05152b;
 }
-.profile{
-    border:2px solid blue;
+
+.profile {
+    border: 2px solid blue;
     width: 20%;
     margin-left: 40px;
 }
-.profile img{
+
+.profile img {
     width: 200px;
     height: 200px;
     object-fit: fit;
     border-radius: 400px;
-    margin-top:40px;
+    margin-top: 40px;
 }
-.Info{
+
+.Info {
     border: 2px solid yellow;
     width: 80%;
     margin-left: 20px;
 }
-.about{
+
+.about {
     display: block;
     border: 2px solid green;
 }
 
-.name{
+.name {
     font-size: 50px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-top: 50px;
     display: flex;
     justify-content: center;
 }
 
-.title{
-    font-size:30px;
-    font-family:monospace;
+.title {
+    font-size: 30px;
+    font-family: monospace;
     display: flex;
     justify-content: center;
     border: 3px solid red;
     margin-top: -30px;
 }
-.project{
+
+.project {
     display: flex;
     border: 2px solid blue;
     padding: 10px;
     justify-content: center;
 }
-.proj, .resume, .myResume{
-border: 2px solid orange;
-font-size: 30px;
-padding:6px;
-color: orange;
-cursor: pointer;
-text-decoration: none;
+
+.proj,
+.resume,
+.myResume {
+    border: 2px solid orange;
+    font-size: 30px;
+    padding: 6px;
+    color: orange;
+    cursor: pointer;
+    text-decoration: none;
 
 }
-.resume{
+
+.resume {
     margin-left: 50px;
 }
-.myResume{
+
+.myResume {
     border: none;
 }
 
-.myResume:hover{
+.myResume:hover {
     color: whitesmoke;
     border: whitesmoke;
 }
+
 /*
 Beginning of section 1
 */
-.page1,.page2{
+.page1{
     border: 2px solid blue;
     height: 300px;
     padding-left: 20px;
 }
-.page1 div{
+
+
+.page2 {
+    border: 2px solid blue;
+    height: 300px;
+    padding-left: 20px;
+}
+
+.page1 {
     border: 2px solid green;
-    display: inline;
-    width: 200px;
-    height: 200px;
-}
-.clockFrame{
-    border: 2px solid white;
-    width: 400px;
+    display: flex;
+    width:100px;
     height: 400px;
+    
 }
-.clock img{
-    width: 200px;
+
+.clock{
+    width: 100px;
     height: 100px;
     object-fit: contain;
     border-radius: 20px;
+    border: 2px solid white;
 }
 
-.contact{
+.clockFrame{
+    width: 100px;
+    height: 500px;
+}
+.contact {
     height: 400px;
     border: 2px solid greenyellow;
     display: flex;
 }
 
-.cont1 input{
+.cont1 input {
     border: 2px solid black;
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: 90%;
 }
-.cont1{
-    display:inline;
+
+.cont1 {
+    display: inline;
     width: 70%;
 }
 
-.cont2{
+.cont2 {
     border: 2px solid red;
     width: 30%;
 }
