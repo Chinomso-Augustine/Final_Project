@@ -1,3 +1,9 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     background-color: #0d1117;
     color: white;
@@ -39,9 +45,9 @@ nav {
 .name {
     font-size: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top: 50px;
     display: flex;
     justify-content: center;
+    margin: 20px;
 }
 
 .title {
@@ -50,7 +56,7 @@ nav {
     display: flex;
     justify-content: center;
     border: 3px solid red;
-    margin-top: -30px;
+    margin: 20px;
 }
 
 .project {
@@ -58,6 +64,7 @@ nav {
     border: 2px solid blue;
     padding: 10px;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .viewProj,
@@ -98,6 +105,7 @@ Beginning of section 1
     border-radius: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 40px;
+    margin: 15px;
     
 
 }
@@ -106,21 +114,25 @@ Beginning of section 1
     display: flex;
     width:100%;
     height:400px;
+    justify-content: left;
     
 }
 
-.clock, .proj{
+.proj{
     width: 200px;
-    height: 300px;
     border-radius: 20px;
     border: 2px solid white;
     margin-right: 10px;
     margin-top: 40px;
 }
-.clock img{
-    width: 200px;
-    height: 100px;
-    object-fit: contain;
+.proj img{
+    width: 80%;
+    height: 120px;
+    object-fit: fit;
+    margin-top: 35px;
+    margin-left: 17px;
+    border-radius: 20px;
+    border: 2px solid yellow;
 }
 
 /*project translation*/
@@ -129,11 +141,35 @@ Beginning of section 1
     position: relative; 
     animation: moveLight 3s linear infinite;
 }
-
+/*
 @keyframes moveLight {
     100%   { transform: translateX(0); }
     0% { transform: translateX(-100px); }
   }
+    */
+
+.projDetails h3{
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: rgb(167, 90, 239); 
+    margin: 20px 0;
+}
+.projDetails p, a{
+    font-size: 18px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: rgb(167, 90, 239);
+    border: 2px solid burlywood;
+    border-radius: 10px;
+    margin: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
 
   .page2 {
     border: 2px solid blue; 
