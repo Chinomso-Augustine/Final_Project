@@ -2,85 +2,101 @@ const display = document.querySelector('.display');
 let result = "";
 let waitingForOperand = false;
 
+// Initialize calculator with event delegation
 function calculator() {
-  //Using eventlistener to update when button is clicked
   document.querySelector('.calculator').addEventListener('click', function (e) {
-    if (e.target.tagName === 'BUTTON') {
-      const buttonValue = e.target.textContent;
-      operation(buttonValue);
+    const button = e.target;
+
+    if (button.tagName !== 'BUTTON') return;
+
+    // Check for each type of input
+    if (button.dataset.num !== undefined) {
+      appendToResult(button.dataset.num);
+    } else if (button.dataset.op !== undefined) {
+      operation(button.dataset.op);
+    } else if (button.dataset.func !== undefined) {
+      handleFunction(button.dataset.func);
     }
   });
 }
 
-//function to handle basic operations
+// Handle numbers
+function appendToResult(value) {
+  if (waitingForOperand) {
+    result += value;
+    waitingForOperand = false;
+  } else {
+    result += value;
+  }
+  display.value = result;
+}
+
+// Handle basic and scientific operations
 function operation(value) {
-  let toInt = 0;
   let answer = 0;
 
   switch (value) {
     case '=':
       try {
-        if (result.includes('sinh') || result.includes('cosh') || result.includes('tanh') || result.includes('sin') || result.includes('cos') || result.includes('tan')) {
-          //matching num after sinh
-          const match = result.match(/(sinh|cosh|tanh|sin|cos|tan)\(([^)]+)\)/) || result.match(/(sinh|cosh|tanh|sin|cos|tan)(\d+)/);
-          if (match) {
-            //extracting trig functions 
-            const extractTrigFun = match[1];
-            const numToCalc = parseFloat(match[2].trim());
+        // Check for trigonometric functions
+        const trigMatch = result.match(/(sinh|cosh|tanh|sin|cos|tan)\(([^)]+)\)/) || result.match(/(sinh|cosh|tanh|sin|cos|tan)(\d+)/);
+        if (trigMatch) {
+          const func = trigMatch[1];
+          const num = parseFloat(trigMatch[2].trim());
 
-            //checking if numToCal is an actual number
-            if (!isNaN(numToCalc)) {
-              if (extractTrigFun === 'sinh') {
-                answer = Math.sinh(numToCalc);
-              }
-              else if (extractTrigFun === 'cosh') {
-                answer = Math.cosh(numToCalc);
-              }
-              else if (extractTrigFun === 'tanh') {
-                answer = Math.tanh(numToCalc);
-              }
-              else if (extractTrigFun === 'sin') {
-                answer = Math.sin(numToCalc);
-              }
-              else if (extractTrigFun === 'cos') {
-                answer = Math.cos(numToCalc);
-              }
-              else if (extractTrigFun === 'tan') {
-                answer = Math.tan(numToCalc);
-              }
-              result = answer.toString().replace("e+", "e");
+          if (!isNaN(num)) {
+            switch (func) {
+              case 'sinh': answer = Math.sinh(num); break;
+              case 'cosh': answer = Math.cosh(num); break;
+              case 'tanh': answer = Math.tanh(num); break;
+              case 'sin': answer = Math.sin(num); break;
+              case 'cos': answer = Math.cos(num); break;
+              case 'tan': answer = Math.tan(num); break;
             }
-
-            else {
-              result = "Not a number";
-            }
-          }
-          else {
-            result = "Not Trig Fun";
+            result = answer.toString().replace("e+", "e");
+          } else {
+            result = "Not a number";
           }
         }
-        else {
 
+        else if (result.includes('^')) {
+          const [base, exponent] = result.split('^').map(Number);
+          if (!isNaN(base) && !isNaN(exponent)) {
+            result = Math.pow(base, exponent).toString();
+          } else {
+            result = "Error";
+          }
+        }
+
+        else {
           result = eval(result.trim()).toString();
         }
       }
       catch (e) {
-        result = "Unexpected Calculation";
-      }
-      break;
+          result = "Error";
+        }
 
+        break;
+
+    default:
+      result += value;
+      break;
+  }
+
+  display.value = result;
+}
+
+// Handle special functions
+function handleFunction(func) {
+  let num;
+
+  switch (func) {
     case 'AC':
       result = '';
       break;
 
     case '+/-':
-      if (result.startsWith("-")) {
-        // Removing negative sign if present
-        result = result.substring(1);
-      } else if (result !== "" && result !== "0") {
-        // Adding negative sign if not already negative
-        result = "-" + result;
-      }
+      result = result.startsWith('-') ? result.slice(1) : '-' + result;
       break;
 
     case '%':
@@ -91,172 +107,87 @@ function operation(value) {
       result = Math.random().toFixed(8);
       break;
 
-    case 'sinh':
-      result = "sinh";
-      waitingForOperand = true;
-      break;
-
-    case 'cosh':
-      result = "cosh";
-      waitingForOperand = true;
-      break;
-
-    case 'tanh':
-      result = "tanh";
-      waitingForOperand = true;
-      break;
-
-    case 'sin':
-      result = "sin";
-      waitingForOperand = true;
-      break;
-
-    case 'cos':
-      result = "cos";
-      waitingForOperand = true;
-      break;
-
-    case 'tan':
-      result = "tan";
+    case 'sinh': case 'cosh': case 'tanh':
+    case 'sin': case 'cos': case 'tan':
+      result = `${func}`;
       waitingForOperand = true;
       break;
 
     case 'π':
-      let piValue = Math.PI.toFixed(8);
-      toInt = parseFloat(result);
-      if (!isNaN(toInt)) {
-        result = (toInt * piValue)
-        // Replace "e+" to display exponential in a simpler format
-        result = answer.toString().replace("e+", "e");
-
-      } else {
-        result = piValue.toString();
-      }
+      const pi = Math.PI;
+      const val = parseFloat(result);
+      result = !isNaN(val) ? (val * pi).toString().replace("e+", "e") : pi.toFixed(8);
       break;
 
     case 'x!':
-      try {
-        //converting current num for factorial
-        const curNum = parseFloat(result.trim(), 10);
-
-        //Ensure input is not negative
-        if (isNaN(curNum) || !Number.isInteger(curNum)) {
-          result = "Choose number first";
-        }
-        else if (curNum < 0) {
-          result = "Cannot be negative"
-        } else {
-          result = factorialRecursive(curNum);
-        }
-      } catch (e) {
-        result = "Unexpected calculator Error";
+      num = parseFloat(result.trim());
+      if (isNaN(num) || !Number.isInteger(num)) {
+        result = "Num first";
+      } else if (num < 0) {
+        result = "Cannot be negative";
+      } else {
+        result = factorialRecursive(num).toString();
       }
+      break;
 
+    case 'log':
+      num = parseFloat(result.trim());
+      if (isNaN(num) || num <= 0) {
+        result = "Num First"; // log10 undefined for 0 or negative numbers
+      } else {
+        result = Math.log10(num).toString();
+      }
       break;
 
     case 'e':
       try {
-        const eNum = Math.E;
-        result = result * eNum;
-      }
-      catch (e) {
-        result = "Wrong e Calculation";
+        result = (parseFloat(result) * Math.E).toString();
+      } catch {
+        result = "Invalid e";
       }
       break;
 
-      case 'EE': 
+    case 'EE':
+      if (!result.includes('e')) {
+        result += 'e';
+      }
+      break;
 
-      
+    case 'ln':
+      num = parseFloat(result.trim());
+      if (isNaN(num) || num <= 0) {
+        result = "Num First"; // ln undefined for 0 or negative numbers
+      } else {
+        result = Math.log(num).toString();
+      }
+      break;
 
+    case '^':
+      // Add caret to display for user to enter exponent
+      if (!result.includes('^')) {
+        result += '^';
+      }
+      break;
 
+    case 'Mode':
+      // You can implement mode switching logic here (rad/deg)
+      break;
 
-
-
-
+    case 'Rad':
+    case 'Deg':
+      // Placeholder for future angle format switching
+      break;
 
     default:
-      if (waitingForOperand && !isNaN(value)) {
-        result += value;
-        waitingForOperand = false; // Reset the flag as we have the operand now
-      } else {
-        result += value;  // Handles other values by appending to the result
-      }
       break;
   }
-  display.value = result;  // Updates the display with the current result
 
+  display.value = result;
 }
 
-function convertAngle(input, format) {
-  return format === "Deg" ? input * (Math.PI / 180) : input * (180 / Math.PI);
-}
-
+// Recursive factorial function
 function factorialRecursive(n) {
-  if (n < 0) {
-    return;
-  }
-
-  if (n === 0 || n === 1) {
-    return 1;
-  }
-
-
-  return n * factorialRecursive(n - 1);
+  return n <= 1 ? 1 : n * factorialRecursive(n - 1);
 }
 
-
-
-
-/*
-//Listening to use keyboard input
-function keyboardListener() {
-
- 
-   document.addEventListener('keydown', function (e) {
-       const keyValue = e.key;
-
- 
-       const allowedCommands = ['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Enter', 'Escape'];
-       //Since enter and = are identical and Escape and Clear are identical, store them in different variables and chose them randomly
-       const keyMap = {
-           'Enter': '=',
-           'Backspace': 'AC',
-           'Escape': 'AC'
-       };
-
-
- 
- 
-       //preventing invalid keys
-       if (!allowedCommands.includes(keyValue) && isNaN(Number(keyValue))&& keyValue !== '(' && keyValue !== ')') {
-           e.preventDefault();
-@@ -181,19 +218,19 @@ function keyboardListener() {
-       if (keyValue === '(' || keyValue === ')') {
-           basicOperation(keyValue);
-           return;
-
- 
-       }
-
- 
-       //Handling ctrl = for selecting = sign and ctrl 8 for * 
-     
-       if (e.shiftKey && keyValue === '*') {
-           basicOperation('*');
-           return;
-       }
-
-
- 
- 
-       const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '=', 'Clear'];
-
- 
-       //Checking if user key is on the list
-       if (keysAllowed.includes(keyValue)) {
-           basicOperation(keyValue);
-@@ -204,4 +241,4 @@ function keyboardListener() {
-   });
-}
-*/
 calculator();

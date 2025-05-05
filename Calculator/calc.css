@@ -1,20 +1,22 @@
-
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: rgb(13, 13, 82);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     border: 2px solid white;
+    min-height: 100vh;
 }
-.calculator{
-    width: 450px;
-    display:block;
+
+.calculator {
+    width: 450px; 
+    display: block;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -24,8 +26,8 @@ body{
     top: 10px;
 }
 
-.display{
-    border: 6px solid white;
+.display {
+    border: 6px solid purple;
     width: 100%;
     height: 100px;
     font-size: 40px;
@@ -34,93 +36,87 @@ body{
     color: purple;
     position: relative;
     border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    text-align: left;
 }
 
-button{
+/* All buttons base style */
+button {
     margin: 7px;
-    font-family: Arial, Helvetica, sans-serif ;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: white;
     cursor: pointer;
+    border: none;
 }
 
-.scientificFuns button{
+/* Scientific function buttons */
+.scientificFuns button {
+    width: 45px; 
+    height: 30px;
     font-size: 10px;
-    width: 12%;
-    height: 40px;
     border-radius: 25px;
-    border: none;
     background-color: rgb(22, 20, 20);
     box-shadow: 4px -5px 8px rgb(235, 130, 130);
-
-}
-.radOrDeg{
-    display:inline-block;
-    background-color: rgb(22, 20, 20);
-    border-radius: 25px;
-    position: relative;
-   
-}
-.radOrDeg a{
-    display: block;
-    color: whitesmoke;
-    font-size: 13px;
-    text-decoration: none;
-    padding-right:2px;
-    text-align: center;
-    border-radius: 10px;
+    margin: 10px;
 }
 
-.radOrDeg .content{
-    display: none;
-    position: absolute;
-    background-color: rgba(28, 155, 155, 0.462);
-    min-width: 40px;
-    box-shadow: 2px 2px 5px rgb(241, 238, 238);
-    border-radius: 10px;
-    width: 70px;
-    top: 40px;
-}
-
-.radOrDeg:hover .content{
-   display: block;
-}
-   
-.radOrDeg a:hover{
-    background-color: rgb(172, 94, 94);
-}
-.basicAndNumeric button{
+/* Basic number and operation buttons */
+.basicAndNumeric button {
     width: 92px;
     height: 50px;
     border-radius: 60px;
-    border: none;
     font-size: 20px;
     box-shadow: 4px -5px 8px rgb(215, 150, 150);
-
-
 }
-.operator{
+
+/* OLD CLASS SUPPORT (unchanged) */
+.operator {
     background-color: #f0cd07;
 }
-.clear,.lightBrwnbtns{
-   background-color: rgb(88, 75, 75);
+.clear,
+.lightBrwnbtns {
+    background-color: rgb(88, 75, 75);
 }
-.num{
+.num {
     background-color: rgb(47, 40, 40);
 }
-.mode{
+.mode {
     background-color: purple;
 }
 
+/* NEW CLASSES FROM UPDATED HTML */
+.btn-num {
+    background-color: rgb(47, 40, 40);
+}
 
-@media (max-width: 800px){
-    .calculator{
+.btn-op {
+    background-color: #f0cd07;
+    color: black;
+}
+
+.btn-func {
+    background-color: rgb(88, 75, 75);
+}
+
+.btn-mode {
+    background-color: purple;
+}
+
+/* RESPONSIVE STYLING */
+@media (max-width: 800px) {
+    .calculator {
         width: 60%;
     }
-    .scientificFuns button{
-        width: 10%;
-    }
-    .basicAndNumeric button{
+
+    .scientificFuns button {
+        width: 9%; 
+        height: 20px;
+        font-size: 10px;
+        }
+
+    .basicAndNumeric button {
         width: 19%;
     }
 }

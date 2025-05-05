@@ -1,121 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
-    <link rel="stylesheet" href="calc.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" href="calc.css"/>
 </head>
-
 <body>
+  <section class="calculator" aria-label="Scientific Calculator">
 
-    <section class="calculator">
+    <!-- Display -->
+    <input type="text" class="display" readonly aria-label="Display" />
 
-        <input type="text" class="display">
+    <!-- Scientific Functions -->
+    <div class="scientificFuns">
+      <!-- Grouped functions with data attributes -->
+      <button data-func="(">(</button>
+      <button data-func=")">)</button>
+      <button data-func="^">^</button>
+      <button data-func="ln">ln</button>
+      <button data-func="log">log</button>
+      <button data-func="x!">x!</button>
+      <button data-func="sin">sin</button>
+      <button data-func="cos">cos</button>
+      <button data-func="tan">tan</button>
+      <button data-func="e">e</button>
+      <button data-func="EE">EE</button>
+      <button data-func="Rand">Rand</button>
+      <button data-func="sinh">sinh</button>
+      <button data-func="cosh">cosh</button>
+      <button data-func="tanh">tanh</button>
+      <button data-func="π">π</button>
+      <button data-func="Rad">Rad</button>
+      <button data-func="Deg">Deg</button>
+    </div>
 
-        <div class="scientificFuns">
-            <!-- Parentheses and Memory Functions -->
-            <button>(</button>
-            <button>)</button>
-            <button>mc</button>
-            <button>m+</button>
-            <button>m-</button>
-            <button>mr</button>
+    <!-- Basic Operations and Digits -->
+    <div class="basicAndNumeric">
+      <button class="btn-func" data-func="AC">AC</button>
+      <button class="btn-func" data-func="+/-">+/-</button>
+      <button class="btn-func" data-func="%">%</button>
+      <button class="btn-op" data-op="/">÷</button>
 
-            <!-- Power Functions -->
-            <button>2<sup>nd</sup></button>
-            <button>x<sup>2</sup></button>
-            <button>x<sup>3</sup></button>
-            <button>x<sup>y</sup></button>
-            <button>e<sup>x</sup></button>
-            <button>10<sup>x</sup></button>
+      <!-- Numbers -->
+      <button class="btn-num" data-num="7">7</button>
+      <button class="btn-num" data-num="8">8</button>
+      <button class="btn-num" data-num="9">9</button>
+      <button class="btn-op" data-op="*">×</button>
 
+      <button class="btn-num" data-num="4">4</button>
+      <button class="btn-num" data-num="5">5</button>
+      <button class="btn-num" data-num="6">6</button>
+      <button class="btn-op" data-op="-">−</button>
 
-            <button>1/x</button>
+      <button class="btn-num" data-num="1">1</button>
+      <button class="btn-num" data-num="2">2</button>
+      <button class="btn-num" data-num="3">3</button>
+      <button class="btn-op" data-op="+">+</button>
 
-            <button>
-                <math>
-                    <mroot>
-                        <mi>x</mi>
-                        <mn>2</mn>
-                    </mroot>
-                </math>
-            </button>
+      <button class="btn-mode" data-func="Mode">Mode</button>
+      <button class="btn-num" data-num="0">0</button>
+      <button class="btn-num" data-num=".">.</button>
+      <button class="btn-op" data-op="=">=</button>
+    </div>
 
-            <button>
-                <math>
-                    <mroot>
-                        <mi>x</mi>
-                        <mn>3</mn>
-                    </mroot>
-                </math>
-            </button>
-
-            <button>
-                <math>
-                    <mroot>
-                        <mi>x</mi>
-                        <mn>y</mn>
-                    </mroot>
-                </math>
-            </button>
-            <button>ln</button>
-            <button>log<sub>10</sub></button>
-
-            <!-- Trigonometric Functions -->
-            <button>x!</button>
-            <button>sin</button>
-            <button>cos</button>
-            <button>tan</button>
-            <button>e</button>
-            <button>EE</button>
-
-            <!-- Random and Hyperbolic Functions -->
-            <button>Rand</button>
-            <button>sinh</button>
-            <button>cosh</button>
-            <button>tanh</button>
-            <button>π</button>
-
-            <div class="radOrDeg">
-                <button> Rad/Deg</button>
-                <div class="content">
-                    <a href="">Deg</a>
-                    <a href="">Rad</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Basic Operations and Clear -->
-        <div class="basicAndNumeric">
-
-            <button class="clear">AC</button>
-            <button class="lightBrwnbtns">+/-</button>
-            <button class="lightBrwnbtns">%</button>
-            <button class="operator">/</button>
-            <button class="num">7</button>
-            <button class="num">8</button>
-            <button class="num">9</button>
-            <button class="operator">*</button>
-
-            <!-- Numeric Buttons -->
-            <button class="num">4</button>
-            <button class="num">5</button>
-            <button class="num">6</button>
-            <button class="operator">-</button>
-            <button class="num">1</button>
-            <button class="num">2</button>
-            <button class="num">3</button>
-            <button class="operator">+</button>
-            <button class="mode">Mode</button>
-            <button class="num">0</button>
-            <button class="num">.</button>
-            <button class="operator">=</button>
-        </div>
-
-    </section>
-    <script src="calc.js"></script>
+  </section>
+  <script src="calc.js"></script>
 </body>
-
 </html>
