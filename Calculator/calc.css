@@ -71,24 +71,8 @@ button {
     box-shadow: 4px -5px 8px rgb(215, 150, 150);
 }
 
-/* OLD CLASS SUPPORT (unchanged) */
-.operator {
-    background-color: #f0cd07;
-}
-.clear,
-.lightBrwnbtns {
-    background-color: rgb(88, 75, 75);
-}
-.num {
-    background-color: rgb(47, 40, 40);
-}
-.mode {
-    background-color: purple;
-}
-
-/* NEW CLASSES FROM UPDATED HTML */
 .btn-num {
-    background-color: rgb(47, 40, 40);
+    background-color: rgb(60, 2, 2);
 }
 
 .btn-op {
@@ -100,6 +84,9 @@ button {
     background-color: rgb(88, 75, 75);
 }
 
+.btn-ac{
+    background-color: rgb(146, 14, 128);
+}
 .btn-mode {
     background-color: purple;
 }
