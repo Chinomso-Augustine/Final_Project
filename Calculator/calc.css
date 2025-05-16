@@ -24,6 +24,7 @@ body {
     border-radius: 20px;
     position: absolute;
     top: 10px;
+    box-shadow: 2px 2px 3px 2px rgb(235, 130, 130);
 }
 
 .display {

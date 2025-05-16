@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Calculator</title>
-  <link rel="stylesheet" href="calc.css"/>
+  <link rel="stylesheet" href="calc.css">
 </head>
 <body>
   <section class="calculator" aria-label="Scientific Calculator">
 
     <!-- Display -->
-    <input type="text" class="display" readonly aria-label="Display" />
+    <input type="text" class="display" readonly aria-label="Display" >
 
     <!-- Scientific Functions -->
     <div class="scientificFuns">
       <!-- Grouped functions with data attributes -->
-      <button data-func="(">(</button>
-      <button data-func=")">)</button>
-      <button data-func="^">^</button>
-      <button data-func="ln">ln</button>
-      <button data-func="log">log</button>
-      <button data-func="x!">x!</button>
-      <button data-func="sin">sin</button>
-      <button data-func="cos">cos</button>
-      <button data-func="tan">tan</button>
-      <button data-func="e">e</button>
-      <button data-func="EE">EE</button>
-      <button data-func="Rand">Rand</button>
-      <button data-func="sinh">sinh</button>
-      <button data-func="cosh">cosh</button>
-      <button data-func="tanh">tanh</button>
-      <button data-func="π">π</button>
-      <button data-func="Rad">Rad</button>
-      <button data-func="Deg">Deg</button>
+      <button type="button"  data-func="(">(</button>
+      <button type="button" data-func=")">)</button>
+      <button type="button"  data-func="^">^</button>
+      <button type="button"  data-func="ln">ln</button>
+      <button type="button"  data-func="log">log</button>
+      <button type="button"  data-func="x!">x!</button>
+      <button type="button"  data-func="sin">sin</button>
+      <button type="button"  data-func="cos">cos</button>
+      <button type="button"  data-func="tan">tan</button>
+      <button type="button"  data-func="e">e</button>
+      <button type="button"  data-func="EE">EE</button>
+      <button type="button"  data-func="Rand">Rand</button>
+      <button type="button"  data-func="sinh">sinh</button>
+      <button type="button"  data-func="cosh">cosh</button>
+      <button type="button"  data-func="tanh">tanh</button>
+      <button type="button"  data-func="π">π</button>
+      <button type="button"  data-func="Rad">Rad</button>
+      <button type="button"  data-func="Deg">Deg</button>
     </div>
 
     <!-- Basic Operations and Digits -->
     <div class="basicAndNumeric">
-      <button class="btn-ac" data-func="AC">AC</button>
-      <button class="btn-func" data-func="+/-">+/-</button>
-      <button class="btn-func" data-func="%">%</button>
-      <button class="btn-op" data-op="/">÷</button>
+      <button type="button"  class="btn-ac" data-func="AC">AC</button>
+      <button type="button"   class="btn-func" data-func="+/-">+/-</button>
+      <button type="button"  class="btn-func" data-func="%">%</button>
+      <button type="button"  class="btn-op" data-op="/">÷</button>
 
       <!-- Numbers -->
-      <button class="btn-num" data-num="7">7</button>
-      <button class="btn-num" data-num="8">8</button>
-      <button class="btn-num" data-num="9">9</button>
-      <button class="btn-op" data-op="*">×</button>
+      <button type="button"  class="btn-num" data-num="7">7</button>
+      <button type="button"  class="btn-num" data-num="8">8</button>
+      <button type="button"  class="btn-num" data-num="9">9</button>
+      <button type="button"  class="btn-op" data-op="*">×</button>
 
-      <button class="btn-num" data-num="4">4</button>
-      <button class="btn-num" data-num="5">5</button>
-      <button class="btn-num" data-num="6">6</button>
-      <button class="btn-op" data-op="-">−</button>
+      <button  type="button" class="btn-num" data-num="4">4</button>
+      <button type="button"  class="btn-num" data-num="5">5</button>
+      <button type="button"  class="btn-num" data-num="6">6</button>
+      <button type="button"  class="btn-op" data-op="-">−</button>
 
-      <button class="btn-num" data-num="1">1</button>
-      <button class="btn-num" data-num="2">2</button>
-      <button class="btn-num" data-num="3">3</button>
-      <button class="btn-op" data-op="+">+</button>
+      <button type="button"  class="btn-num" data-num="1">1</button>
+      <button type="button"  class="btn-num" data-num="2">2</button>
+      <button type="button"  class="btn-num" data-num="3">3</button>
+      <button type="button"  class="btn-op" data-op="+">+</button>
 
-      <button class="btn-mode" data-func="Mode">Mode</button>
-      <button class="btn-num" data-num="0">0</button>
-      <button class="btn-num" data-num=".">.</button>
-      <button class="btn-op" data-op="=">=</button>
+      <button  type="button" class="btn-mode" data-func="Mode">Mode</button>
+      <button type="button"  class="btn-num" data-num="0">0</button>
+      <button type="button"  class="btn-num" data-num=".">.</button>
+      <button type="button"  class="btn-op" data-op="=">=</button>
     </div>
 
   </section>
