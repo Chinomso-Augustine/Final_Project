@@ -5,13 +5,13 @@
 }
 
 body {
-    background-color: rgb(13, 13, 82);
+    background-color: rgb(12, 12, 49);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    border: 2px solid white;
     min-height: 100vh;
+    margin-top: 10%;
 }
 
 .calculator {
