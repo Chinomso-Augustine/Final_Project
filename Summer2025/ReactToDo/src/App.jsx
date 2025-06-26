@@ -9,11 +9,11 @@ import './App.css'
 function App() {
   const [userInput, setUserInput] = useState(""); //for getting input info //
   const [task, setTask] = useState([]);   //For storing tasks //
-  const [completedItem, setCompletedItems] = useState([]); // for completed items
+  const [completedTask, setCompletedTask] = useState([]); // for completed items
 
   function handleAddTask() {
     if (userInput != "") {
-      let newTask = { text: userInput, completed: false }
+      const newTask = { text: userInput, completed: false }
       setTask([...task, newTask]) //pushing newTask into setTask
       setUserInput(""); //clearing the searchbar 
     }
@@ -28,25 +28,38 @@ function App() {
     setTask(newTaskList);
   }
 
-  function handleComplete(indextToComplete){
-    const updatedTask = task.map((items, index) =>{
-      index === indextToComplete? {...items, completed: !items.completed}: items; 
-    })
-    setTask(updatedTask); 
+  function handleComplete(indexToComplete) {
+    const finishedTask = task[indexToComplete];
+
+    //add to completedTask list 
+    setCompletedTask([...completedTask, finishedTask]);
+
+    //Remove from main task list 
+    const updatedTask = task.filter((items, index) => index !== indexToComplete);
+    setTask(updatedTask);
   }
   return (
     <div className='inputContainer'>
       <div><input className='entry' value={userInput} onChange={(e) => setUserInput(e.target.value)} /> </div>
       {/*capture userValue with value ={userInput}, update state with onClick */}
       <div>
-        <button className='addTask' onClick={handleAddTask}> Add Task </button>  </div>
+        <button className='addTask' onClick={handleAddTask}> Add Task </button>  
+      </div>
+      <h3>To-Do List</h3>
       <ul>
         {task.map((items, index) => {
           return <li key={index}>{items.text}
-          <button onClick={() => handleComplete(index)} className='completeBt'> Complete </button>
+            <button onClick={() => handleComplete(index)} className='completeBt'> Complete </button>
             <button onClick={() => handleDelete(index)} className='deleteBtn'> Delete</button>
           </li>
         })}
+      </ul>
+
+      {/*completed task */}
+      <ul>
+        {completedTask.map((item, index) =>(
+          <li key={index}> {item.text} </li>
+        ))}
       </ul>
     </div>
   )
