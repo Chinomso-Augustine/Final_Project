@@ -14,7 +14,7 @@ height: auto;
   border-radius: 10px;
 }
 
-.addTask,.deleteBtn{
+.addTask,.deleteBtn,.completeBt{
   border: 1px solid #eee;
   margin-bottom: 10px;
   font-size: 20px;
@@ -27,4 +27,7 @@ height: auto;
 }
 .deleteBtn{
   background-color:navy;
+}
+.completeBt{
+  background-color:rgb(35, 80, 80);
 }
