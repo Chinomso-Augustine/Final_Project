@@ -14,7 +14,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-gradient-to-r from-purple-900 to-indigo-800 text-white">
+    <nav className="bg-gradient-to-r from-purple-800 via-purple-800 to-indigo-800 text-white">
       <div className="flex items-center justify-between h-[100px] px-6">
         {/* Logo */}
         <div className="text-3xl font-bold">CampusConnect</div>
